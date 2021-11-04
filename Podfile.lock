@@ -1,0 +1,41 @@
+PODS:
+  - ADSuyiKit (0.5.1.08251)
+  - ADSuyiLocationManager (0.1.7.11261)
+  - ADSuyiNetwork (0.1.6.08251):
+    - ADSuyiKit (~> 0.5.1)
+  - MJRefresh (3.7.2)
+  - TianmuSDK (1.0.0):
+    - ADSuyiKit (~> 0.5.1.0)
+    - ADSuyiLocationManager
+    - ADSuyiNetwork (~> 0.1.6.0)
+
+DEPENDENCIES:
+  - MJRefresh
+  - TianmuSDK (from `http://121.41.108.203/adsuyi_code/tianmusdk_beta.git`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ADSuyiKit
+    - ADSuyiLocationManager
+    - ADSuyiNetwork
+    - MJRefresh
+
+EXTERNAL SOURCES:
+  TianmuSDK:
+    :git: http://121.41.108.203/adsuyi_code/tianmusdk_beta.git
+
+CHECKOUT OPTIONS:
+  TianmuSDK:
+    :commit: 74e36f74f85d0a80b482cf570233afb5e92b2ec3
+    :git: http://121.41.108.203/adsuyi_code/tianmusdk_beta.git
+
+SPEC CHECKSUMS:
+  ADSuyiKit: f04c3aeae9a8f239ebb86e5a8f94c87f1421ea8e
+  ADSuyiLocationManager: 9a4a0ed5941f1aa106a24a1aecbdcb7126a3dceb
+  ADSuyiNetwork: 604510e3aa29d27a9b0e34d871c10dd2e88f7988
+  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  TianmuSDK: be5536e0125ed16c4aaa6fb39c071bcc1e43f329
+
+PODFILE CHECKSUM: 95331fb43b6c67845954ba996bdaa689f6e9397d
+
+COCOAPODS: 1.11.2

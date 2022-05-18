@@ -93,7 +93,9 @@
         return;
     }
 //    发送竞价成功通知
-    [_splashAd sendWinNotificationWithPrice:[_splashAd bidFloor] + 1];
+    double otherPlatPrice = 1;
+    [_splashAd sendWinNotificationWithPrice:otherPlatPrice];
+    
     CGFloat bottomViewHeight;
     if (kADSYCurveScreen) {
         bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;

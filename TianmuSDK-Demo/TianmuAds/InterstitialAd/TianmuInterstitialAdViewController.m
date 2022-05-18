@@ -113,7 +113,8 @@
     //    [self.interstitialAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:1000];
     if (_isNormalAd)
         return;
-    [self.interstitialAd sendWinNotificationWithPrice:[_interstitialAd bidPrice] > [_interstitialAd bidFloor] ? [_interstitialAd bidFloor] + 1 : [_interstitialAd bidPrice] ];
+    double otherPlatPrice = 1;
+    [self.interstitialAd sendWinNotificationWithPrice:otherPlatPrice];
     if (_isReady) {
         [self.interstitialAd showFromRootViewController:self];
         return;

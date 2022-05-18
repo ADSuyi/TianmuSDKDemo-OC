@@ -88,7 +88,6 @@
 }
 
 - (void)showRewardVodAd {
-    [self.rewardVodAd sendWinNotificationWithPrice:[_rewardVodAd bidFloor]];
     if (!_isReady) {
         [self.view makeToast:@"广告未准备好"];
         return;
@@ -108,7 +107,8 @@
 - (void)bidWin {
     if (_isNormalAd)
         return;
-    [self.rewardVodAd sendWinNotificationWithPrice:[_rewardVodAd bidFloor]];
+    double otherPlatPrice = 1;
+    [self.rewardVodAd sendWinNotificationWithPrice:otherPlatPrice];
     if (_isReady) {
         [self.rewardVodAd showFromRootViewController:self];
         return;

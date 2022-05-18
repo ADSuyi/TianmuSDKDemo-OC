@@ -232,7 +232,6 @@ NSLocationAlwaysAndWhenInUseUsageDeion
 
 ```obj-c
 #import <TianmuSDK/TianmuSDK.h>
-、、、
 [TianmuSDK initWithAppId:@"1001004" completionBlock:^(NSError * _Nullable error) {
      if (error)
          NSLog(@"初始化失败%@",error);

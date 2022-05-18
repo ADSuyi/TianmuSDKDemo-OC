@@ -62,7 +62,7 @@
 推荐使用pod命令导入
 
 ```ruby
-pod 'TianmuSDK','1.0.0'
+pod 'TianmuSDK','1.2.0.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>

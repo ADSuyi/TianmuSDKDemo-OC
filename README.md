@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v1.0.0
+# TianmuSDK iOS接入文档 v1.2.0.1
 
 
 
@@ -39,6 +39,8 @@
 | 文档版本 | 修订日期   | 修订说明                                                     |
 | -------- | ---------- | ------------------------------------------------------------ |
 | v1.0.0   | 2021-11-04 | 首版发布 |
+| v1.1.0   | 2022-4-25 | 支持竞价功能（支持开屏，模板&自渲染信息流，插屏，激励视频） |
+| v1.2.0.1   | 2022-5-25 | 插屏广告支持滑一滑或摇一摇交互方式；新增个性化广告开关 |
 
 
 <div STYLE="page-break-after: always;"></div>
@@ -68,15 +70,6 @@ pod 'TianmuSDK','1.2.0.1'
 <div STYLE="page-break-after: always;"></div>
 
 
-## 2.2 手动导入SDK方式
-
-[点击进入SDK下载地址]()下载SDK拖入到工程中
-
-手动方式导入,需要添加如下依赖库:
-
-```obj-c
-libresolv.9.tbd
-```
 
 <div STYLE="page-break-after: always;"></div>
 
@@ -201,11 +194,21 @@ NSLocationAlwaysAndWhenInUseUsageDeion
 }
 // 建议启动App用户同意协议后就获取权限或者请求广告前获取
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+         // 针对iOS15中不弹窗被拒解决方案，方案1：经测试可能无效
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),             dispatch_get_main_queue(), ^{
+            // 用户同意协议后获取
+                      //[self requestIDFA];
+        //});
+}
+// 方案2：根据官方文档调整权限申请时机
+// 根据官方开发文档选择在此方法中进行权限申请
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     // 用户同意协议后获取
       [self requestIDFA];
 }
-
+// 建议方案1与2一起使用，可正常通过审核。
 ```
+
 
 <div STYLE="page-break-after: always;"></div>
 

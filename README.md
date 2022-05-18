@@ -233,7 +233,7 @@ NSLocationAlwaysAndWhenInUseUsageDeion
 ```obj-c
 #import <TianmuSDK/TianmuSDK.h>
 、、、
-[TianmuSDK initWithAppId:@"1001003" completionBlock:^(NSError * _Nullable error) {
+[TianmuSDK initWithAppId:@"1001004" completionBlock:^(NSError * _Nullable error) {
      if (error)
          NSLog(@"初始化失败%@",error);
  }];
@@ -299,12 +299,59 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 */
 - (void)loadAndShowInWindow:(UIWindow *)window withBottomView:(nullable UIView *)bottomView;
 
+
+/**
+ 加载开屏广告（不会自动调用展示方法，需开发者于成功回调后调用showAdInWindow:withBottomView）
+ 建议竞价广告询价使用
+ */
+- (void)loadAd;
+
+/**
+ 展示开屏广告（与loadAd一同使用，于成功回调后调用）
+ */
+- (void)showInWindow:(UIWindow *)window withBottomView:(nullable UIView *)bottomView;
+
+
+/**
+ 返回广告的出价，单位：分
+ 
+ @return 成功返回一个大于等于0的值，小于等于0表示广告请求失败或获取eCPM时机不正确(请于请求广告成功后获取)
+*/
+- (NSInteger)bidPrice;
+
+/**
+ 返回广告的底价，单位：分
+ 
+ @return 成功返回一个大于等于0的值，小于等于0表示广告请求失败或获取底价时机不正确(请于请求广告成功后获取)
+*/
+- (NSInteger)bidFloor;
+
+/**
+ *  竞胜之后调用, 需要在展示广告之前调用
+ *  @param price 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，需传入天目广告底价+1（单位：分）如底价与出价相同无需+1
+ */
+- (void)sendWinNotificationWithPrice:(NSInteger)price;
+
+/**
+ *  竞败之后调用,
+ *  @param reason 竞价失败原因
+ *  @param winnerPirce 竟赢者价格，单位：分
+ */
+- (void)sendWinFailNotificationReason:(TianmuAdBiddingLossReason)reason winnerPirce:(NSInteger)winnerPirce;
+
+
+@end
+
 ```
 
 <div STYLE="page-break-after: always;"></div>
-开屏广告代理回调 - TianmuSplashAdDelegate
+
+开屏广告代理回调 - ADSuyiSDKSplashAdDelegate,ADSuyiSDKSplashAdZoomOutViewDelegate
 
 ```obj-c
+@protocol TianmuSplashAdDelegate <NSObject>
+
+@optional
 /**
  *  开屏广告请求成功
  */
@@ -335,10 +382,29 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 - (void)tianmuSplashAdClicked:(TianmuSplashAd *)splashAd;
 
 /**
+ *  开屏广告倒计时结束回调
+ */
+- (void)tianmuSplashAdCountdownToZero:(TianmuSplashAd *)splashAd;
+
+/**
+ *  开屏广告点击跳过回调
+ */
+- (void)tianmuSplashAdSkiped:(TianmuSplashAd *)splashAd;
+
+/**
  *  开屏广告关闭回调
  */
 - (void)tianmuSplashAdClosed:(TianmuSplashAd *)splashAd;
 
+/**
+ *  开屏广告关闭落地页回调
+ */
+- (void)tianmuSplashAdCloseLandingPage:(TianmuSplashAd *)splashAd;
+
+/**
+ *  开屏广告展示失败
+ */
+- (void)tianmuSplashAdFailToShow:(TianmuSplashAd *)splashAd error:(NSError *)error;
 
 @end
 
@@ -355,7 +421,6 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
  * 推荐在AppDelegate中的最后加载开屏广告
  * 其他的接入方式会有需要特殊注意的方式，遇到过的相关问题在SDK相关问题的文档中有提到
  * 不建议在开屏展示过程中做控制器的切换（如：开屏广告关闭回调时切换当前window的根控制器或者present另外一个控制器）
- * SUPPORT_SPLASH_ZOOMOUT，是否需要支持V+视频开屏广告取决于开发者，不选择v+开屏则可以不去适配
  */
 
 - (void)loadSplashAd{
@@ -363,12 +428,10 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
     _splashAd = [[TianmuSplashAd alloc]init];
     _splashAd.posId = @"60cafb2d8759";
     _splashAd.delegate = self;
-        //    _splashAd.hiddenSkipView = YES;
-        //    _splashAd.skipView = _skipView;
     // 设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
     _splashAd.backgroundColor = [UIColor adsy_getColorWithImage:[UIImage imageNamed:@"750x1334.png"] withNewSize:[UIScreen mainScreen].bounds.size];
     
-    [_splashAd loadAndShowInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : bottomView];
+    [_splashAd loadAndShowInWindow:[UIApplication sharedApplication].keyWindow withBottomView:nil];
 }
 
 // 8、代理回调
@@ -440,12 +503,12 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 @interface TianmuBannerAdView : UIView
 
 /**
- *  委托 [可选]
+ *  委托 
  */
 @property (nonatomic ,weak) id<TianmuBannerAdViewDelegate>  delegate;
 
 /*
- 详解：当前ViewController
+ 详解：当前ViewController[必传]
  */
 @property (nonatomic ,weak) UIViewController  *viewController;
 
@@ -494,6 +557,12 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
  *  被用户关闭时调用
  */
 - (void)tianmuBannerViewWillClose:(TianmuBannerAdView *)tianmuBannerView;
+
+/**
+ *  被用户关闭广告落地页调用
+ */
+- (void)tianmuBannerViewCloseLandingPage:(TianmuBannerAdView *)tianmuBannerView;
+
 ```
 
 
@@ -503,13 +572,18 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 #import <TianmuSDK/TianmuBannerAdView.h>
 
 - (void)loadBannerAd {
-      // 1、初始化banner视图，并给定frame值
+    // 1、初始化banner视图，并给定frame值
     self.bannerAd = [[TianmuBannerAdView alloc] initWithFrame:CGRectMake(0, 250, kADSYScreenWidth, kADSYScreenWidth / rate) posId:posId];
-      // 2、设置委托对象
+    // 2、设置委托对象
     self.bannerAd.delegate = self;
-      // 3、添加到父视图
+    
+    // 3、当前ViewController
+    self.bannerAd.viewController = self;
+    
+    // 4、添加到父视图
     [self.view addSubview:self.bannerAd];
-    // 4、请求广告
+    
+    // 5、请求广告
     [self.bannerAd loadRequest];
 }
 
@@ -555,6 +629,13 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
     [self.bannerAd removeFromSuperview];
     self.bannerAd = nil;
 }
+
+/**
+ *  关闭落地页
+ */
+- (void)tianmuBannerViewCloseLandingPage:(TianmuBannerAdView *)tianmuBannerView {
+    
+}
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -594,7 +675,14 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 */
 @property (nonatomic, weak) UIViewController *controller;
 
-
+/**
+ 是否设置静音模式
+*/
+@property (nonatomic ,assign) BOOL playMute;
+/**
+  是否设置自动播放模式
+ */
+@property (nonatomic ,assign) BOOL autoPlay;
 /**
  初始化广告加载器，需传入需要广告尺寸(一般按照16：9比例返回广告视图）
  */
@@ -609,7 +697,24 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
  */
 - (void)loadAdWithCount:(int)count;
 
+/**
+ *  竞胜之后调用, 需要在展示广告之前调用（必须调用否则无法展示广告）
+ *
+ *  @param adView 竞价成功的广告视图，该广告价格请调用[adView getBidPrice]获取，具体见TianmuExpressViewRegisterProtocol，单位：分
+ *  @param price 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，需传入底价+1（单位：分）;如底价与出价相同无需+1
+ */
+- (void)sendWinNotificationWithAdView:(UIView<TianmuExpressViewRegisterProtocol> *)adView price:(NSInteger)price;
+
+/**
+ *  竞败之后调用,
+ *  @param reason 竞价失败原因
+ *  @param winnerPirce 竟赢者价格，单位：分
+ *  @param adView 竞价失败的广告视图
+ */
+- (void)sendWinFailNotificationReason:(TianmuAdBiddingLossReason)reason winnerPirce:(NSInteger)winnerPirce AdView:(UIView<TianmuExpressViewRegisterProtocol> *)adView;
+
 @end
+
 
 ```
 
@@ -621,7 +726,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 /**
  模板信息流广告加载成功
  */
-- (void)tianmuExpressAdSucceedToLoad:(TianmuNativeExpressAd *)expressAd views:(NSArray<__kindof TianmuNativeExpressView *> *)views;
+- (void)tianmuExpressAdSucceedToLoad:(TianmuNativeExpressAd *)expressAd views:(NSArray<__kindof UIView<TianmuExpressViewRegisterProtocol> *> *)views;
 
 /**
  模板信息流广告加载失败
@@ -631,7 +736,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 /**
  模板信息流广告渲染成功
  */
-- (void)tianmuExpressAdRenderSucceed:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView;
+- (void)tianmuExpressAdRenderSucceed:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
 
 /**
  模板信息流广告渲染失败
@@ -641,17 +746,46 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 /**
  模板信息流广告关闭
  */
-- (void)tianmuExpressAdClosed:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView;
+- (void)tianmuExpressAdClosed:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
 
 /**
  模板信息流广告点击
  */
-- (void)tianmuExpressAdClick:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView;
+- (void)tianmuExpressAdClick:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
 
 /**
  模板信息流广告展示
  */
-- (void)tianmuExpressAdDidExpourse:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView;
+- (void)tianmuExpressAdDidExpourse:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
+
+/**
+ 模板信息流广告关闭落地页
+ */
+- (void)tianmuExpressAdDidCloseLandingPage:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
+
+/**
+ *以下为视频信息流相关回调
+ */
+
+/**
+ 模板信息流视频广告开始播放
+ */
+- (void)tianmuExpressAdVideoPlay:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
+
+/**
+ 模板信息流视频广告视频播放失败
+ */
+- (void)tianmuExpressAdVideoPlayFail:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView error:(NSError *)error;
+
+/**
+ 模板信息流视频广告视频暂停
+ */
+- (void)tianmuExpressAdVideoPause:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
+
+/**
+ 模板信息流视频广告视频播放完成
+ */
+- (void)tianmuExpressAdVideoFinish:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView;
 
 
 @end
@@ -661,23 +795,24 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 请求信息流广告请求示例：
 
 ```obj-c
-#import <ADSuyiSDK/ADSuyiSDKNativeAd.h>
+#import <TianmuSDK/TianmuNativeExpressAd.h>
 
 if(!_nativeAd) {
    // 1、信息流广告初始化
-   _nativeAd = [[TianmuNativeExpressAd alloc]initWithAdSize:CGSizeMake(UIScreen.mainScreen.bounds.size.width, 10)];
-   _nativeAd.delegate = self;
-   _nativeAd.posId = @"037dec29b815";
-   _nativeAd.controller = self;
+    _nativeAd = [[TianmuNativeExpressAd alloc]initWithAdSize:CGSizeMake(UIScreen.mainScreen.bounds.size.width, 10)];
+    _nativeAd.delegate = self;
+    _nativeAd.posId = @"bfc718eda042";
+    _nativeAd.controller = self;
 }
-// 3、加载信息流广告
+
+// 2、加载信息流广告
 [_nativeAd loadAdWithCount:1];
 
 // 4、代理回调
 #pragma mark - TianmuNativeExpressAdDelegate
 
 // 模板信息流广告加载成功
-- (void)tianmuExpressAdSucceedToLoad:(TianmuNativeExpressAd *)expressAd views:(NSArray<__kindof TianmuNativeExpressView *> *)views {
+- (void)tianmuExpressAdSucceedToLoad:(TianmuNativeExpressAd *)expressAd views:(NSArray<__kindof UIView<TianmuExpressViewRegisterProtocol> *> *)views {
     for (TianmuNativeExpressView *adView in views) {
         [adView tianmu_registViews:@[adView]];
     }
@@ -688,12 +823,14 @@ if(!_nativeAd) {
 // 模板信息流广告加载失败
 - (void)tianmuExpressAdFailToLoad:(TianmuNativeExpressAd *)expressAd error:(NSError *)error {
     NSLog(@"信息流广告加载失败%@",error);
-    [self.tableView.mj_header endRefreshing];
-    [self.tableView.mj_footer endRefreshing];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+    });
 }
 
 // 模板信息流广告渲染成功
-- (void)tianmuExpressAdRenderSucceed:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView {
+- (void)tianmuExpressAdRenderSucceed:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
     dispatch_async(dispatch_get_main_queue(), ^{
         for (int i = 0; i < 6; i ++) {
             [self.items addObject:[NSNull null]];
@@ -705,23 +842,62 @@ if(!_nativeAd) {
 
 // 模板信息流广告渲染失败
 - (void)tianmuExpressAdRenderFail:(TianmuNativeExpressAd *)expressAd error:(NSError *)error {
-    
+    [self.view makeToast:[NSString stringWithFormat:@"信息流渲染失败：%@",error]];
 }
 
 // 模板信息流广告关闭
-- (void)tianmuExpressAdClosed:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView {
+- (void)tianmuExpressAdClosed:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
     [self.items removeObject:expressAdView];
     [self.tableView reloadData];
 }
 
 // ，模板信息流广告点击
-- (void)tianmuExpressAdClick:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView {
+- (void)tianmuExpressAdClick:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
     
 }
 
 
-// ，模板信息流广告展示
-- (void)tianmuExpressAdDidExpourse:(TianmuNativeExpressAd *)expressAd adView:(TianmuNativeExpressView *)expressAdView {
+// 模板信息流广告展示
+- (void)tianmuExpressAdDidExpourse:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
+    
+}
+
+/**
+ *以下为视频信息流相关回调
+ */
+
+/**
+ 模板信息流视频广告开始播放
+ */
+- (void)tianmuExpressAdVideoPlay:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
+    NSLog(@"视频信息流播放");
+}
+
+/**
+ 模板信息流视频广告视频播放失败
+ */
+- (void)tianmuExpressAdVideoPlayFail:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView error:(NSError *)error {
+    NSLog(@"视频信息流播放失败，%@",error);
+}
+
+/**
+ 模板信息流视频广告视频暂停
+ */
+- (void)tianmuExpressAdVideoPause:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
+    NSLog(@"视频信息流播放暂停");
+}
+
+/**
+ 模板信息流视频广告视频播放完成
+ */
+- (void)tianmuExpressAdVideoFinish:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
+    NSLog(@"视频信息流播放完成");
+}
+
+/**
+ 关闭落地页
+ */
+- (void)tianmuExpressAdDidCloseLandingPage:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
     
 }
 
@@ -745,12 +921,12 @@ if(!_nativeAd) {
 ```obj-c
 @interface TianmuInterstitialAd : NSObject
 
-/*
+/**
  委托对象
  */
 @property (nonatomic ,weak) id<TianmuInterstitialAdDelegate>  delegate;
 
-/*
+/**
  详解：当前ViewController
  */
 @property (nonatomic, weak) UIViewController *controller;
@@ -766,6 +942,18 @@ if(!_nativeAd) {
 @property (nonatomic, copy) NSString *posId;
 
 /**
+ 是否设置视频静音模式
+*/
+@property (nonatomic ,assign) BOOL playMute;
+/**
+ 是否支持摇一摇
+*/
+@property (nonatomic ,assign) BOOL isSupportShake;
+/**
+ 支持滑一滑 滑动方向
+*/
+@property (nonatomic ,assign) TianmuAnimateSlipDirection slipDirection;
+/**
  加载广告数据
 */
 - (void)loadAdData;
@@ -774,6 +962,34 @@ if(!_nativeAd) {
  展示广告
 */
 - (void)showFromRootViewController:(UIViewController *)viewController;
+
+/**
+ 返回广告的eCPM，单位：分
+ 
+ @return 成功返回一个大于等于0的值，小于等于0表示广告请求失败或获取eCPM时机不正确(请于请求广告成功后获取)
+*/
+- (NSInteger)bidPrice;
+
+/**
+ 返回广告的底价，单位：分
+ 
+ @return 成功返回一个大于等于0的值，小于等于0表示广告请求失败或获取底价时机不正确(请于请求广告成功后获取)
+*/
+- (NSInteger)bidFloor;
+
+/**
+ *  竞胜之后调用, 需要在展示广告之前调用
+ *  @param price 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，需传入天目广告底价+1（单位：分）如底价与出价相同无需+1
+ */
+- (void)sendWinNotificationWithPrice:(NSInteger)price;
+
+/**
+ *  竞败之后调用,
+ *  @param reason 竞价失败原因
+ *  @param winnerPirce 竟赢者价格，单位：分
+ */
+- (void)sendWinFailNotificationReason:(TianmuAdBiddingLossReason)reason winnerPirce:(NSInteger)winnerPirce;
+
 
 @end
 ```
@@ -813,7 +1029,6 @@ if(!_nativeAd) {
  */
 - (void)tianmuInterstitialFailToPresent:(TianmuInterstitialAd *)unifiedInterstitial error:(NSError *)error;
 
-
 /**
  *  插屏广告曝光回调
  */
@@ -824,11 +1039,41 @@ if(!_nativeAd) {
  */
 - (void)tianmuInterstitialClicked:(TianmuInterstitialAd *)unifiedInterstitial;
 
-
 /**
  *  插屏广告页关闭
  */
 - (void)tianmuInterstitialAdDidDismissClose:(TianmuInterstitialAd *)unifiedInterstitial;
+
+/**
+ *  插屏广告落地页关闭
+ */
+- (void)tianmuInterstitialAdDidCloseLandingPage:(TianmuInterstitialAd *)unifiedInterstitial;
+
+
+/**
+ *以下为视频插屏相关回调
+ */
+
+/**
+ 插屏视频广告开始播放
+ */
+- (void)tianmuInterstitialAdVideoPlay:(TianmuInterstitialAd *)unifiedInterstitial;
+
+/**
+ 插屏视频广告视频播放失败
+ */
+- (void)tianmuInterstitialAdVideoPlayFail:(TianmuInterstitialAd *)unifiedInterstitial error:(NSError *)error;
+
+/**
+ 插屏视频广告视频暂停
+ */
+- (void)tianmuInterstitialAdVideoPause:(TianmuInterstitialAd *)unifiedInterstitial;
+
+/**
+ 插屏视频广告视频播放完成
+ */
+- (void)tianmuInterstitialAdVideoFinish:(TianmuInterstitialAd *)unifiedInterstitial;
+
 
 @end
 
@@ -843,17 +1088,19 @@ OC请求插屏代码示例：
     // 1、初始化插屏广告
     self.interstitialAd = [[TianmuInterstitialAd alloc]init];
     self.interstitialAd.controller = self;
-    self.interstitialAd.posId   =    @"f9176a53842d";
+    self.interstitialAd.posId   =   @"f358ed196c2b";
     self.interstitialAd.delegate = self;
     [self.interstitialAd loadAdData];
 }
 
 #pragma mark - TianmuInterstitialAdDelegate
-/**
+**
  *  插屏广告数据请求成功
  */
 - (void)tianmuInterstitialSuccessToLoadAd:(TianmuInterstitialAd *)unifiedInterstitial {
     [self.view makeToast:@"广告准备好"];
+    if (!_isNormalAd)
+        [self.view makeToast:[NSString stringWithFormat:@"当前广告价格：%ld",unifiedInterstitial.bidPrice]];
     _isReady = YES;
 }
 
@@ -866,7 +1113,6 @@ OC请求插屏代码示例：
 }
 /**
  *  插屏广告渲染成功
- *  建议在此回调后展示广告
  */
 - (void)tianmuInterstitialRenderSuccess:(TianmuInterstitialAd *)unifiedInterstitial {
     
@@ -885,6 +1131,7 @@ OC请求插屏代码示例：
  *  插屏广告展示失败回调该函数
  */
 - (void)tianmuInterstitialFailToPresent:(TianmuInterstitialAd *)unifiedInterstitial error:(NSError *)error {
+    [self.view makeToast:[NSString stringWithFormat:@"当前广告展示失败%@",error]];
     _interstitialAd = nil;
 }
 
@@ -910,6 +1157,40 @@ OC请求插屏代码示例：
 - (void)tianmuInterstitialAdDidDismissClose:(TianmuInterstitialAd *)unifiedInterstitial {
     _interstitialAd = nil;
 }
+
+/**
+ 插屏视频广告开始播放
+ */
+- (void)tianmuInterstitialAdVideoPlay:(TianmuInterstitialAd *)unifiedInterstitial {
+    NSLog(@"插屏视频播放");
+}
+
+
+/**
+ 插屏视频广告视频播放失败
+ */
+- (void)tianmuInterstitialAdVideoPlayFail:(TianmuInterstitialAd *)unifiedInterstitial error:(NSError *)error {
+    NSLog(@"插屏视频播放失败");
+}
+
+/**
+ 插屏视频广告视频暂停
+ */
+- (void)tianmuInterstitialAdVideoPause:(TianmuInterstitialAd *)unifiedInterstitial {
+    NSLog(@"插屏视频播放暂停");
+}
+
+/**
+ 插屏视频广告视频播放完成
+ */
+- (void)tianmuInterstitialAdVideoFinish:(TianmuInterstitialAd *)unifiedInterstitial {
+    NSLog(@"插屏视频播放完成");
+}
+
+- (void)tianmuInterstitialAdDidCloseLandingPage:(TianmuInterstitialAd *)unifiedInterstitial {
+    
+}
+
 
 ```
 

@@ -50,12 +50,11 @@
 }
 
 - (void)initTianSDK{
-    
     // 是否允许SDK采集设备信息（网络信息等） ，默认开启，如需关闭需在初始化之前设置(开启并不会影响审核)
     [TianmuSDK setEnablePersonalInformation:YES];
     
     //初始化TianmuSDK
-    [TianmuSDK initWithAppId:@"1001004" completionBlock:^(NSError * _Nullable error) {
+    [TianmuSDK initWithAppId:@"1001003" completionBlock:^(NSError * _Nullable error) {
         if (error){
             NSLog(@"初始化失败%@",error);
         }else{

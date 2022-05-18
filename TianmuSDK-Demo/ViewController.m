@@ -13,6 +13,7 @@
 #import "TianmuBannderViewController.h"
 #import "TianmuInterstitialAdViewController.h"
 #import "TianmuNativeAdViewController.h"
+#import "ADTianmuRewardVodAdViewController.h"
 #import <TianmuSDK/TianmuSDK.h>
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,7 +31,7 @@
     self.title = [NSString stringWithFormat:@"天目广告 Demo"];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.dataArray = @[@"开屏广告-半屏", @"开屏广告-全屏", @"信息流广告", @"Banner横幅广告",@"插屏广告"];
+    self.dataArray = @[@"开屏广告-半屏", @"开屏广告-全屏", @"信息流广告", @"Banner横幅广告",@"插屏广告",@"激励视频"];
     
     [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mainTableView];
@@ -129,6 +130,10 @@
         }
         case 4: {
             [self.navigationController pushViewController:[TianmuInterstitialAdViewController new] animated:YES];
+            break;
+        }
+        case 5: {
+            [self.navigationController pushViewController:[ADTianmuRewardVodAdViewController new] animated:YES];
             break;
         }
         default:

@@ -1198,6 +1198,135 @@ OC请求插屏代码示例：
 <div STYLE="page-break-after: always;"></div> 
 
 
+## 4.6 激励视频广告 - TianmuRewardVodAd
+
+插屏广告是移动广告的一种常见形式，在应用流程中弹出，当应用展示插屏广告时，用户可以选择点击广告，访问其目标网址，也可以将其关闭并返回应用。在应用执行流程的自然停顿点，适合投放这类广告。
+
+`OC请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/RewardVodAd/ADTianmuRewardVodAdViewController.m)
+
+`Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
+
+激励视频广告 - TianmuRewardVodAd：
+
+```obj-c
+#import <TianmuSDK/TianmuRewardVodAd.h>
+
+- (void)loadRewardvodAd{
+    // 1、初始化激励视频广告
+    self.rewardVodAd = [[TianmuRewardVodAd alloc] init];
+    self.rewardVodAd.delegate = self;
+    self.rewardVodAd.controller = self;
+    self.rewardVodAd.posId = @"c09f127483ad";
+    [self.rewardVodAd loadAdData];
+}
+
+- (void)showRewardVodAd {
+    [self.rewardVodAd sendWinNotificationWithPrice:[_rewardVodAd bidFloor]];
+    if (!_isReady) {
+        [self.view makeToast:@"广告未准备好"];
+        return;
+    }
+    [self.rewardVodAd showFromRootViewController:self];
+}
+
+
+**
+ *  激励视频广告数据请求成功
+ */
+- (void)tianmuRewardVodAdSuccessToLoadAd:(TianmuRewardVodAd *)rewardVodAd {
+    if (!_isNormalAd)
+        [self.view makeToast:[NSString stringWithFormat:@"当前广告价格：%ld",rewardVodAd.bidPrice]];
+}
+
+/**
+ *  激励视频广告数据请求失败
+ */
+- (void)tianmuRewardVodAdFailToLoadAd:(TianmuRewardVodAd *)rewardVodAd error:(NSError *)error {
+    NSLog(@"激励视频请求失败===%@",error);
+}
+
+/**
+ *  激励视频广告缓存成功
+ 
+ */
+- (void)tianmuRewardVodAdVideoCacheFinish:(TianmuRewardVodAd *)rewardVodAd {
+    NSLog(@"激励视频缓存成功");
+}
+
+/**
+ *  激励视频广告渲染成功
+ *  建议在此回调后展示广告
+ */
+- (void)tianmuRewardVodAdVideoReadyToPlay:(TianmuRewardVodAd *)rewardVodAd {
+    _isReady = YES;
+    [self.view makeToast:@"广告准备好"];
+}
+
+/**
+ *  激励视频广告播放失败
+ *
+ */
+- (void)tianmuRewardVodAdVideoPlayFail:(TianmuRewardVodAd *)rewardVodAd error:(NSError *)error {
+    NSLog(@"激励视频播放失败%@",error);
+}
+
+/**
+ *  激励视频视图展示成功回调
+ *  激励视频展示成功回调该函数
+ */
+- (void)tianmuRewardVodAdDidPresentScreen:(TianmuRewardVodAd *)rewardVodAd {
+    
+}
+
+/**
+ *  激励视频广告视图展示失败回调
+ *  激励视频广告展示失败回调该函数
+ */
+- (void)tianmuRewardVodAdFailToPresent:(TianmuRewardVodAd *)rewardVodAd error:(NSError *)error {
+    [self.view makeToast:[NSString stringWithFormat:@"当前广告展示失败%@",error]];
+}
+
+/**
+ *  激励视频广告曝光回调
+ */
+- (void)tianmuRewardVodAdWillExposure:(TianmuRewardVodAd *)rewardVodAd {
+    NSLog(@"激励视频曝光");
+}
+
+/**
+ *  激励视频广告点击回调
+ */
+- (void)tianmuRewardVodAdClicked:(TianmuRewardVodAd *)rewardVodAd {
+    NSLog(@"激励视频点击");
+}
+
+/**
+ *  激励视频广告页关闭
+ */
+- (void)tianmuRewardVodAdAdDidDismissClose:(TianmuRewardVodAd *)rewardVodAd {
+    _rewardVodAd = nil;
+}
+
+/**
+ *  激励视频广告达到激励条件
+ */
+- (void)tianmuRewardVodAdAdDidEffective:(TianmuRewardVodAd *)rewardVodAd {
+    NSLog(@"激励视频达到激励条件");
+}
+
+- (void)tianmuRewardVodAdAdVideoPlayFinish:(TianmuRewardVodAd *)rewardVodAd {
+    NSLog(@"激励视频播放完成");
+}
+
+- (void)tianmuRewardVodAdCloseLandingPage:(TianmuRewardVodAd *)rewardVodAd {
+    
+}
+
+```
+
+<div STYLE="page-break-after: always;"></div>
+<div STYLE="page-break-after: always;"></div> 
+
 ## 作者
 
 bale@admobile.top

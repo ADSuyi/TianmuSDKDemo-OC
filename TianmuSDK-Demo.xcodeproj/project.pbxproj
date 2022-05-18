@@ -30,6 +30,8 @@
 		2DEF8EA8579FD80B058013D2 /* libPods-TianmuSDK-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FFBFDA1B6B07C5AAB8A10D /* libPods-TianmuSDK-Demo.a */; };
 		BA87B20127322E2700D7B954 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA87B20027322E2700D7B954 /* AppTrackingTransparency.framework */; };
 		BAE7213E27326CC200052A30 /* Tianmu_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE7213D27326CC200052A30 /* Tianmu_Logo.png */; };
+		FACED9D02834CFAD006623B1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACED9CF2834CFAD006623B1 /* CoreTelephony.framework */; };
+		FACED9D42834D084006623B1 /* ADTianmuRewardVodAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACED9D32834D084006623B1 /* ADTianmuRewardVodAdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,9 @@
 		BA87B20027322E2700D7B954 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		BAE7213D27326CC200052A30 /* Tianmu_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tianmu_Logo.png; sourceTree = "<group>"; };
 		D03716139064BE387146EB90 /* libPods-TianmuSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TianmuSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACED9CF2834CFAD006623B1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		FACED9D22834D084006623B1 /* ADTianmuRewardVodAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTianmuRewardVodAdViewController.h; sourceTree = "<group>"; };
+		FACED9D32834D084006623B1 /* ADTianmuRewardVodAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTianmuRewardVodAdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +95,7 @@
 				2DEF8EA8579FD80B058013D2 /* libPods-TianmuSDK-Demo.a in Frameworks */,
 				035E597527264DBD00C51632 /* libresolv.9.tbd in Frameworks */,
 				03293E2D26F4308A0094AB96 /* ADSuyiKit.xcframework in Frameworks */,
+				FACED9D02834CFAD006623B1 /* CoreTelephony.framework in Frameworks */,
 				03293E2F26F4308A0094AB96 /* ADSuyiKitIDFA.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +119,7 @@
 		0397973F26F030E60033D33E /* TianmuAds */ = {
 			isa = PBXGroup;
 			children = (
+				FACED9D12834D076006623B1 /* RewardVodAd */,
 				0C637FB626F08F3D0088EAE2 /* NativeAd */,
 				0C637FAB26F0781F0088EAE2 /* InterstitialAd */,
 				0397974026F030E60033D33E /* SplashAd */,
@@ -213,6 +220,7 @@
 		68B1F4595A5986438F3450E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FACED9CF2834CFAD006623B1 /* CoreTelephony.framework */,
 				BA87B20027322E2700D7B954 /* AppTrackingTransparency.framework */,
 				035E597427264DB000C51632 /* libresolv.9.tbd */,
 				03340DF62704007D00057B60 /* ADSuyiSDK.xcframework */,
@@ -224,6 +232,15 @@
 				23FFBFDA1B6B07C5AAB8A10D /* libPods-TianmuSDK-Demo.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FACED9D12834D076006623B1 /* RewardVodAd */ = {
+			isa = PBXGroup;
+			children = (
+				FACED9D22834D084006623B1 /* ADTianmuRewardVodAdViewController.h */,
+				FACED9D32834D084006623B1 /* ADTianmuRewardVodAdViewController.m */,
+			);
+			path = RewardVodAd;
 			sourceTree = "<group>";
 		};
 		FD69D80CF1A0B4B88DB25D06 /* Pods */ = {
@@ -355,6 +372,7 @@
 				0397973E26F030D90033D33E /* BaseViewController.m in Sources */,
 				0C15B58E26F33284000E3890 /* TianmuRingProgressView.m in Sources */,
 				03D44A5026EC3DD400F77A69 /* AppDelegate.m in Sources */,
+				FACED9D42834D084006623B1 /* ADTianmuRewardVodAdViewController.m in Sources */,
 				0CB7F5B626FAD089005078DF /* UIView+Toast.m in Sources */,
 				0397974726F030E60033D33E /* TianmuSplashViewController.m in Sources */,
 				0C637FC126F08F970088EAE2 /* TianmuNativeAdViewController.m in Sources */,

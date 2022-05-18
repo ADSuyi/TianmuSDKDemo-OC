@@ -56,8 +56,11 @@
     
     //初始化TianmuSDK
     [TianmuSDK initWithAppId:@"1001004" completionBlock:^(NSError * _Nullable error) {
-        if (error)
-        NSLog(@"初始化失败%@",error);
+        if (error){
+            NSLog(@"初始化失败%@",error);
+        }else{
+            NSLog(@"初始化成功");
+        }
     }];
 }
 

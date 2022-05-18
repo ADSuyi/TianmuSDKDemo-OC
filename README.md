@@ -260,7 +260,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 `Swift请求开屏代码示例：`[[开屏代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/AppDelegate.swift)
 
-开屏广告 - ADSuyiSDKSplashAd：
+开屏广告 - TianmuSplashAd：
 
 ```obj-c
 @interface TianmuSplashAd : NSObject
@@ -434,7 +434,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 }
 
 // 8、代理回调
-#pragma mark - ADSuyiSDKSplashAdDelegate
+#pragma mark - TianmuSplashAdDelegate
 /**
  *  开屏广告请求成功
  */
@@ -1108,7 +1108,7 @@ if(!_nativeAd) {
 OC请求插屏代码示例：
 
 ```obj-c
-#import <ADSuyiSDK/ADSuyiSDKIntertitialAd.h>
+#import <TianmuSDK/TianmuInterstitialAd.h>
 
 - (void)loadInterstitialAd{
     // 1、初始化插屏广告

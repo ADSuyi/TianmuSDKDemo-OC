@@ -80,7 +80,7 @@
         // 初始化开屏广告加载实例
         _splashAd = [[TianmuSplashAd alloc]init];
         // 开屏广告的posid
-        _splashAd.posId = @"9106b5a8d273";
+        _splashAd.posId = @"67dc4a9e3b25";
         // 开屏广告委托对象
         _splashAd.delegate = self;
         //设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)

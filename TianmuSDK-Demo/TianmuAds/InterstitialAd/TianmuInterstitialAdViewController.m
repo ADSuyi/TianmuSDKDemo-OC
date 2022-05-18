@@ -81,13 +81,12 @@
     
 }
 
-// 217d589e286f472159 插屏测试id
 - (void)loadInterstitialAd{
     _isNormalAd = YES;
     // 1、初始化插屏广告
     self.interstitialAd = [[TianmuInterstitialAd alloc]init];
     self.interstitialAd.controller = self;
-    self.interstitialAd.posId   =   @"f358ed196c2b";
+    self.interstitialAd.posId   =   @"682f5d1cb439";
     self.interstitialAd.delegate = self;
     [self.interstitialAd loadAdData];
 }
@@ -105,7 +104,7 @@
     // 1、初始化插屏广告
     self.interstitialAd = [[TianmuInterstitialAd alloc]init];
     self.interstitialAd.controller = self;
-    self.interstitialAd.posId   =   @"83d71e6bac25";// @"b2ecf3a469d5";
+    self.interstitialAd.posId   =   @"03bd2a589fe1";
     self.interstitialAd.delegate = self;
     [self.interstitialAd loadAdData];
 }

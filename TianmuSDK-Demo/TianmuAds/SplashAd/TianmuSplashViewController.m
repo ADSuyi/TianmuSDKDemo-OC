@@ -78,7 +78,7 @@
     if (!_splashAd)
         _splashAd = [[TianmuSplashAd alloc]init];
     // 开屏广告posid
-    _splashAd.posId = @"67dc4a9e3b25";//@"7e3a96124cdb";
+    _splashAd.posId = @"e815b3c6d02a";
     // 开屏广告委托对象
     _splashAd.delegate = self;
     // 设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
@@ -139,7 +139,7 @@
     if (!_splashAd)
         _splashAd = [[TianmuSplashAd alloc]init];
     // 开屏广告posid
-    _splashAd.posId = @"ea06d41c8f25";//@"7e3a96124cdb";
+    _splashAd.posId = @"0b815e3cda9f";
     // 开屏广告委托对象
     _splashAd.delegate = self;
     // 设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)

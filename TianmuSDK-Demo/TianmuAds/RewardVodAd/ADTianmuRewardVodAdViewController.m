@@ -83,7 +83,7 @@
     self.rewardVodAd = [[TianmuRewardVodAd alloc] init];
     self.rewardVodAd.delegate = self;
     self.rewardVodAd.controller = self;
-    self.rewardVodAd.posId = @"c09f127483ad";
+    self.rewardVodAd.posId = @"31dab847fc60";
     [self.rewardVodAd loadAdData];
 }
 
@@ -101,7 +101,7 @@
     self.rewardVodAd = [[TianmuRewardVodAd alloc] init];
     self.rewardVodAd.delegate = self;
     self.rewardVodAd.controller = self;
-    self.rewardVodAd.posId = @"18035b2cae47";
+    self.rewardVodAd.posId = @"bd470c31f968";
     [self.rewardVodAd loadAdData];
 }
 

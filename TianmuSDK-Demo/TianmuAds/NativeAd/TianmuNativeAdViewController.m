@@ -55,8 +55,8 @@
     
     _nativeAd = [[TianmuNativeExpressAd alloc]initWithAdSize:CGSizeMake(UIScreen.mainScreen.bounds.size.width, 10)];
     _nativeAd.delegate = self;
-    self.posId = @"bfc718eda042";
-    self.bidPosId = @"5fb6cd18a032";
+    self.posId = @"6173f490ab52";
+    self.bidPosId = @"fbc75e4826d3";
     _nativeAd.controller = self;
     
     _adViewArray = [NSMutableArray new];
@@ -178,20 +178,16 @@
     UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"" message:@"选择信息流类型" preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *expressType = [UIAlertAction actionWithTitle:@"模板" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         [self cleanAllAd];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.posId = @"bfc718eda042";
-            self.bidPosId = @"5fb6cd18a032";
-//            self.nativeAd.posId = self.posId;
-//            [self.nativeAd loadAdWithCount:3];;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.posId = @"6173f490ab52";
+            self.bidPosId = @"fbc75e4826d3";
         });
     }];
     UIAlertAction *nativeType = [UIAlertAction actionWithTitle:@"自渲染" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         [self cleanAllAd];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.bidPosId = @"db172a85c903";
-            self.posId = @"d17c92e8a35f";
-//            self.nativeAd.posId = self.posId;
-//            [self.nativeAd loadAdWithCount:3];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.posId = @"5738b2e19a04";
+            self.bidPosId = @"3dc0eba57261";
         });
         
     }];

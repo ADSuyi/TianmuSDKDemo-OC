@@ -151,15 +151,9 @@
 
 - (NSArray<AdSuyiBannerItem *> *)array {
     if(!_array) {
-        NSMutableArray *array = [NSMutableArray new];//6c8a713efb95
+        NSMutableArray *array = [NSMutableArray new];
         
-        [array addObject:[AdSuyiBannerItem itemWithRate:640/100.0 posId:@"bd3e926751f4" title:@"640*100"]];
-        [array addObject:[AdSuyiBannerItem itemWithRate:600/150.0 posId:@"6c8a713efb95" title:@"600*150"]];
-        [array addObject:[AdSuyiBannerItem itemWithRate:600/260.0 posId:@"6c8a713efb95" title:@"600*260"]];
-        [array addObject:[AdSuyiBannerItem itemWithRate:600/300.0 posId:@"6c8a713efb95" title:@"600*300"]];
-        [array addObject:[AdSuyiBannerItem itemWithRate:690/388.0 posId:@"6c8a713efb95" title:@"690*388"]];
-        [array addObject:[AdSuyiBannerItem itemWithRate:600/400.0 posId:@"6c8a713efb95" title:@"600*400"]];
-        [array addObject:[AdSuyiBannerItem itemWithRate:600/500.0 posId:@"6c8a713efb95" title:@"600*500"]];
+        [array addObject:[AdSuyiBannerItem itemWithRate:640/100.0 posId:@"e592f0da3b71" title:@"640*100"]];
         
         _array = [array copy];
     }

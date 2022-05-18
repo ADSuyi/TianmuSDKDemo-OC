@@ -110,7 +110,6 @@
 }
 
 - (void)bidWin {
-    //    [self.interstitialAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:1000];
     if (_isNormalAd)
         return;
     double otherPlatPrice = 1;

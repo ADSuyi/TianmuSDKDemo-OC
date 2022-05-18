@@ -28,8 +28,6 @@
 
 @property (nonatomic, strong) NSMutableArray *items;
 
-@property (nonatomic ,strong) UIRefreshControl  *refreshControl;
-
 @property (nonatomic, copy) NSString *posId;
 
 @property (nonatomic, copy) NSString *bidPosId;
@@ -64,8 +62,6 @@
     CGFloat margin = self.view.bounds.size.width/5 - 320/5;
     
     UIButton *loadAndShowBtn = [UIButton new];
-//    [setAdConfigBtn setTitle:@"设置" forState:(UIControlStateNormal)];
-//    [setAdConfigBtn setImage:[UIImage imageNamed:@"set"] forState:(UIControlStateNormal)];
     [loadAndShowBtn setTitle:@"普通请求" forState:(UIControlStateNormal)];
     [loadAndShowBtn setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
     loadAndShowBtn.titleLabel.font = [UIFont systemFontOfSize:15];

@@ -21,8 +21,6 @@
 		03D44A5B26EC3DD700F77A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D44A5A26EC3DD700F77A69 /* Assets.xcassets */; };
 		03D44A5E26EC3DD700F77A69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D44A5C26EC3DD700F77A69 /* LaunchScreen.storyboard */; };
 		03D44A6126EC3DD700F77A69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D44A6026EC3DD700F77A69 /* main.m */; };
-		0C15B58E26F33284000E3890 /* TianmuRingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C15B58A26F33284000E3890 /* TianmuRingProgressView.m */; };
-		0C15B58F26F33284000E3890 /* TianmuCustomSplashSkipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C15B58B26F33284000E3890 /* TianmuCustomSplashSkipView.m */; };
 		0C1835CC26F5E527007481FC /* TianmuNativeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1835CB26F5E527007481FC /* TianmuNativeTableViewCell.m */; };
 		0C637FB126F078610088EAE2 /* TianmuInterstitialAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C637FB026F078610088EAE2 /* TianmuInterstitialAdViewController.m */; };
 		0C637FC126F08F970088EAE2 /* TianmuNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C637FC026F08F970088EAE2 /* TianmuNativeAdViewController.m */; };
@@ -61,10 +59,6 @@
 		03D44A6026EC3DD700F77A69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03D44A7926EC41EA00F77A69 /* ADSuyiKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ADSuyiKit.xcframework; path = Pods/ADSuyiKit/ADSuyiKit/Classes/ADSuyiKit.xcframework; sourceTree = "<group>"; };
 		03D44A7A26EC41EA00F77A69 /* ADSuyiKitIDFA.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ADSuyiKitIDFA.xcframework; path = Pods/ADSuyiKit/ADSuyiKit/Classes/ADSuyiKitIDFA.xcframework; sourceTree = "<group>"; };
-		0C15B58A26F33284000E3890 /* TianmuRingProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TianmuRingProgressView.m; sourceTree = "<group>"; };
-		0C15B58B26F33284000E3890 /* TianmuCustomSplashSkipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TianmuCustomSplashSkipView.m; sourceTree = "<group>"; };
-		0C15B58C26F33284000E3890 /* TianmuCustomSplashSkipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TianmuCustomSplashSkipView.h; sourceTree = "<group>"; };
-		0C15B58D26F33284000E3890 /* TianmuRingProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TianmuRingProgressView.h; sourceTree = "<group>"; };
 		0C1835CA26F5E527007481FC /* TianmuNativeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianmuNativeTableViewCell.h; sourceTree = "<group>"; };
 		0C1835CB26F5E527007481FC /* TianmuNativeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TianmuNativeTableViewCell.m; sourceTree = "<group>"; };
 		0C637FAF26F078610088EAE2 /* TianmuInterstitialAdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianmuInterstitialAdViewController.h; sourceTree = "<group>"; };
@@ -131,7 +125,6 @@
 		0397974026F030E60033D33E /* SplashAd */ = {
 			isa = PBXGroup;
 			children = (
-				0C15B58926F33273000E3890 /* skipView */,
 				0397974226F030E60033D33E /* TianmuSplashViewController.h */,
 				0397974126F030E60033D33E /* TianmuSplashViewController.m */,
 			);
@@ -184,17 +177,6 @@
 				03D44A6026EC3DD700F77A69 /* main.m */,
 			);
 			path = "TianmuSDK-Demo";
-			sourceTree = "<group>";
-		};
-		0C15B58926F33273000E3890 /* skipView */ = {
-			isa = PBXGroup;
-			children = (
-				0C15B58D26F33284000E3890 /* TianmuRingProgressView.h */,
-				0C15B58A26F33284000E3890 /* TianmuRingProgressView.m */,
-				0C15B58C26F33284000E3890 /* TianmuCustomSplashSkipView.h */,
-				0C15B58B26F33284000E3890 /* TianmuCustomSplashSkipView.m */,
-			);
-			path = skipView;
 			sourceTree = "<group>";
 		};
 		0C637FAB26F0781F0088EAE2 /* InterstitialAd */ = {
@@ -370,7 +352,6 @@
 			files = (
 				03D44A5626EC3DD400F77A69 /* ViewController.m in Sources */,
 				0397973E26F030D90033D33E /* BaseViewController.m in Sources */,
-				0C15B58E26F33284000E3890 /* TianmuRingProgressView.m in Sources */,
 				03D44A5026EC3DD400F77A69 /* AppDelegate.m in Sources */,
 				FACED9D42834D084006623B1 /* ADTianmuRewardVodAdViewController.m in Sources */,
 				0CB7F5B626FAD089005078DF /* UIView+Toast.m in Sources */,
@@ -379,7 +360,6 @@
 				03D44A6126EC3DD700F77A69 /* main.m in Sources */,
 				0397973D26F030D90033D33E /* RootViewNavigationController.m in Sources */,
 				0397974926F030E60033D33E /* TianmuBannderViewController.m in Sources */,
-				0C15B58F26F33284000E3890 /* TianmuCustomSplashSkipView.m in Sources */,
 				0C1835CC26F5E527007481FC /* TianmuNativeTableViewCell.m in Sources */,
 				03D44A5326EC3DD400F77A69 /* SceneDelegate.m in Sources */,
 				0C637FB126F078610088EAE2 /* TianmuInterstitialAdViewController.m in Sources */,

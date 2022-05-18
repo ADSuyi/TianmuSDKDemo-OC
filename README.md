@@ -232,7 +232,7 @@ NSLocationAlwaysAndWhenInUseUsageDeion
 
 ```obj-c
 #import <TianmuSDK/TianmuSDK.h>
-[TianmuSDK initWithAppId:@"1001004" completionBlock:^(NSError * _Nullable error) {
+[TianmuSDK initWithAppId:@"1001006" completionBlock:^(NSError * _Nullable error) {
      if (error)
          NSLog(@"初始化失败%@",error);
  }];
@@ -345,7 +345,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 <div STYLE="page-break-after: always;"></div>
 
-开屏广告代理回调 - ADSuyiSDKSplashAdDelegate,ADSuyiSDKSplashAdZoomOutViewDelegate
+开屏广告代理回调 - TianmuSplashAdDelegate
 
 ```obj-c
 @protocol TianmuSplashAdDelegate <NSObject>
@@ -425,7 +425,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 - (void)loadSplashAd{
       //1、 初始化开屏加载实例
     _splashAd = [[TianmuSplashAd alloc]init];
-    _splashAd.posId = @"60cafb2d8759";
+    _splashAd.posId = @"0b815e3cda9f";
     _splashAd.delegate = self;
     // 设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
     _splashAd.backgroundColor = [UIColor adsy_getColorWithImage:[UIImage imageNamed:@"750x1334.png"] withNewSize:[UIScreen mainScreen].bounds.size];
@@ -456,7 +456,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
     NSLog(@"splash开屏广告加载失败%@",error);
 }
 /**
- *  开屏广告展示失败
+ *  开屏广告渲染失败
  */
 - (void)tianmuSplashAdRenderFaild:(TianmuSplashAd *)splashAd withError:(NSError *)error {
     
@@ -480,8 +480,35 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
  *  开屏广告关闭回调
  */
 - (void)tianmuSplashAdClosed:(TianmuSplashAd *)splashAd {
+        _splashAd = nil;
+}
+/**
+ *  开屏广告倒计时结束回调
+ */
+- (void)tianmuSplashAdCountdownToZero:(TianmuSplashAd *)splashAd {
     
 }
+
+/**
+ *  开屏广告点击跳过回调
+ */
+- (void)tianmuSplashAdSkiped:(TianmuSplashAd *)splashAd {
+    
+}
+/**
+ *  开屏广告关闭落地页
+ */
+
+- (void)tianmuSplashAdCloseLandingPage:(TianmuSplashAd *)splashAd {
+    _splashAd = nil;
+}
+/**
+ *  开屏广告展示失败
+ */
+- (void)tianmuSplashAdFailToShow:(TianmuSplashAd *)splashAd error:(NSError *)error {
+  
+}
+
 
 ```
 
@@ -1087,7 +1114,7 @@ OC请求插屏代码示例：
     // 1、初始化插屏广告
     self.interstitialAd = [[TianmuInterstitialAd alloc]init];
     self.interstitialAd.controller = self;
-    self.interstitialAd.posId   =   @"f358ed196c2b";
+    self.interstitialAd.posId   =   @"682f5d1cb439";
     self.interstitialAd.delegate = self;
     [self.interstitialAd loadAdData];
 }
@@ -1185,7 +1212,9 @@ OC请求插屏代码示例：
 - (void)tianmuInterstitialAdVideoFinish:(TianmuInterstitialAd *)unifiedInterstitial {
     NSLog(@"插屏视频播放完成");
 }
-
+/**
+ 关闭落地页
+ */
 - (void)tianmuInterstitialAdDidCloseLandingPage:(TianmuInterstitialAd *)unifiedInterstitial {
     
 }
@@ -1199,13 +1228,157 @@ OC请求插屏代码示例：
 
 ## 4.6 激励视频广告 - TianmuRewardVodAd
 
-插屏广告是移动广告的一种常见形式，在应用流程中弹出，当应用展示插屏广告时，用户可以选择点击广告，访问其目标网址，也可以将其关闭并返回应用。在应用执行流程的自然停顿点，适合投放这类广告。
+将短视频融入到APP场景当中，用户观看短视频广告后可以给予一些应用内奖励。常出现在游戏的复活、任务等位置，或者网服类APP的一些增值服务场景。
 
-`OC请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/RewardVodAd/ADTianmuRewardVodAdViewController.m)
+`OC请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/RewardVodAd/ADTianmuRewardVodAdViewController.m)
 
-`Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
+`Swift请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
 
 激励视频广告 - TianmuRewardVodAd：
+```obj-c
+@interface TianmuRewardVodAd : NSObject
+
+/**
+ 委托对象
+ */
+@property (nonatomic ,weak) id<TianmuRewardVodAdDelegate>  delegate;
+
+/**
+ 详解：当前ViewController
+ */
+@property (nonatomic, weak) UIViewController *controller;
+
+/**
+ 请求超时时间,默认为4s,需要设置3s及以上
+ */
+@property (nonatomic, assign) NSInteger tolerateTimeout;
+
+/**
+ 广告位id
+*/
+@property (nonatomic, copy) NSString *posId;
+
+/**
+ 是否设置视频静音模式
+*/
+@property (nonatomic ,assign) BOOL playMute;
+
+/**
+ 加载广告数据
+*/
+- (void)loadAdData;
+
+/**
+ 展示广告
+*/
+- (void)showFromRootViewController:(UIViewController *)viewController;
+/**
+ *  竞胜之后调用, 需要在展示广告之前调用
+ *  @param price 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，需传入天目广告底价+1（单位：分）如底价与出价相同无需+1
+ */
+- (void)sendWinNotificationWithPrice:(NSInteger)price;
+
+/**
+ *  竞败之后调用,
+ *  @param reason 竞价失败原因
+ *  @param winnerPirce 竟赢者价格，单位：分
+ */
+- (void)sendWinFailNotificationReason:(TianmuAdBiddingLossReason)reason winnerPirce:(NSInteger)winnerPirce;
+
+/**
+ 返回广告的出价，单位：分
+ 
+ @return 成功返回一个大于等于0的值，小于等于0表示广告请求失败或获取eCPM时机不正确(请于请求广告成功后获取)
+*/
+- (NSInteger)bidPrice;
+
+/**
+ 返回广告的底价，单位：分
+ 
+ @return 成功返回一个大于等于0的值，小于等于0表示广告请求失败或获取底价时机不正确(请于请求广告成功后获取)
+*/
+- (NSInteger)bidFloor;
+
+@end
+
+```
+
+激励视频广告代理回调 - TianmuRewardVodAdDelegate
+```obj-c
+
+/**
+ *  激励视频广告数据请求成功
+ */
+- (void)tianmuRewardVodAdSuccessToLoadAd:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告数据请求失败
+ */
+- (void)tianmuRewardVodAdFailToLoadAd:(TianmuRewardVodAd *)rewardVodAd error:(NSError *)error;
+
+/**
+ *  激励视频广告视频缓存成功
+ */
+- (void)tianmuRewardVodAdVideoCacheFinish:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告渲染成功
+ *  建议在此回调后展示广告
+ */
+- (void)tianmuRewardVodAdVideoReadyToPlay:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告播放失败
+ *  
+ */
+- (void)tianmuRewardVodAdVideoPlayFail:(TianmuRewardVodAd *)rewardVodAd error:(NSError *)error;
+
+/**
+ *  激励视频视图展示成功回调
+ *  激励视频展示成功回调该函数
+ */
+- (void)tianmuRewardVodAdDidPresentScreen:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告视图展示失败回调
+ *  激励视频广告展示失败回调该函数
+ */
+- (void)tianmuRewardVodAdFailToPresent:(TianmuRewardVodAd *)rewardVodAd error:(NSError *)error;
+
+/**
+ *  激励视频广告曝光回调
+ */
+- (void)tianmuRewardVodAdWillExposure:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告点击回调
+ */
+- (void)tianmuRewardVodAdClicked:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告页关闭
+ */
+- (void)tianmuRewardVodAdAdDidDismissClose:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告达到激励条件
+ */
+- (void)tianmuRewardVodAdAdDidEffective:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告视频播放结束
+ */
+- (void)tianmuRewardVodAdAdVideoPlayFinish:(TianmuRewardVodAd *)rewardVodAd;
+
+/**
+ *  激励视频广告关闭落地页
+ */
+- (void)tianmuRewardVodAdCloseLandingPage:(TianmuRewardVodAd *)rewardVodAd;
+
+
+```
+
+oc代码激励视频示例：
 
 ```obj-c
 #import <TianmuSDK/TianmuRewardVodAd.h>
@@ -1215,12 +1388,11 @@ OC请求插屏代码示例：
     self.rewardVodAd = [[TianmuRewardVodAd alloc] init];
     self.rewardVodAd.delegate = self;
     self.rewardVodAd.controller = self;
-    self.rewardVodAd.posId = @"c09f127483ad";
+    self.rewardVodAd.posId = @"31dab847fc60";
     [self.rewardVodAd loadAdData];
 }
 
 - (void)showRewardVodAd {
-    [self.rewardVodAd sendWinNotificationWithPrice:[_rewardVodAd bidFloor]];
     if (!_isReady) {
         [self.view makeToast:@"广告未准备好"];
         return;
@@ -1312,11 +1484,15 @@ OC请求插屏代码示例：
 - (void)tianmuRewardVodAdAdDidEffective:(TianmuRewardVodAd *)rewardVodAd {
     NSLog(@"激励视频达到激励条件");
 }
-
+/**
+ *  激励视频广告播放完成
+ */
 - (void)tianmuRewardVodAdAdVideoPlayFinish:(TianmuRewardVodAd *)rewardVodAd {
     NSLog(@"激励视频播放完成");
 }
-
+/**
+ *  激励视频广告关闭落地页
+ */
 - (void)tianmuRewardVodAdCloseLandingPage:(TianmuRewardVodAd *)rewardVodAd {
     
 }
@@ -1327,6 +1503,9 @@ OC请求插屏代码示例：
 <div STYLE="page-break-after: always;"></div> 
 
 ## 作者
+suancai@admobile.top
+
+jiangyou@admobile.top
 
 bale@admobile.top
 

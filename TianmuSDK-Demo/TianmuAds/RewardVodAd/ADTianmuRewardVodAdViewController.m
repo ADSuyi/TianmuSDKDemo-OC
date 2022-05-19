@@ -107,7 +107,7 @@
 - (void)bidWin {
     if (_isNormalAd)
         return;
-    double otherPlatPrice = 1;
+    int otherPlatPrice = 1;
     [self.rewardVodAd sendWinNotificationWithPrice:otherPlatPrice];
     if (_isReady) {
         [self.rewardVodAd showFromRootViewController:self];

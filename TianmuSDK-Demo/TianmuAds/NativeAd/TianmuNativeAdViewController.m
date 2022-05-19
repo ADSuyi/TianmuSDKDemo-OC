@@ -127,9 +127,8 @@
 
 - (void)bidWin {
     for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
-        double otherPlatPrice = 1;
+        int otherPlatPrice = 1;
         [_nativeAd sendWinNotificationWithAdView:adView price:otherPlatPrice];
-//        [expressAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonOther) winnerPirce:100 AdView:adView];
         [adView tianmu_registViews:@[adView]];
         ADSuyiAsyncMainBlock(^{
             [_adViewArray removeObject:adView];
@@ -425,7 +424,7 @@
     [adView bringSubviewToFront:closeButton];
     closeButton.frame = CGRectMake(adWidth - 44, 0, 44, 44);
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-    // adsy_close方法为协议中方法 直接添加target即可 无需实现
+    // tianmu_close方法为协议中方法 直接添加target即可 无需实现
     [closeButton addTarget:adView action:@selector(tianmu_close) forControlEvents:UIControlEventTouchUpInside];
     
 }

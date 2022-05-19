@@ -93,7 +93,7 @@
         return;
     }
 //    发送竞价成功通知
-    double otherPlatPrice = 1;
+    int otherPlatPrice = 1;
     [_splashAd sendWinNotificationWithPrice:otherPlatPrice];
     
     CGFloat bottomViewHeight;

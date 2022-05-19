@@ -112,7 +112,7 @@
 - (void)bidWin {
     if (_isNormalAd)
         return;
-    double otherPlatPrice = 1;
+    int otherPlatPrice = 1;
     [self.interstitialAd sendWinNotificationWithPrice:otherPlatPrice];
     if (_isReady) {
         [self.interstitialAd showFromRootViewController:self];

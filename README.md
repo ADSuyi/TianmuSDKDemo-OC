@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v1.3.0.4
+# TianmuSDK iOS接入文档 v1.3.0.5
 
 
 
@@ -64,7 +64,7 @@
 推荐使用pod命令导入
 
 ```ruby
-pod 'TianmuSDK','~>1.3.0.4'
+pod 'TianmuSDK','~>1.3.0.5'
 ```
 
 <div STYLE="page-break-after: always;"></div>

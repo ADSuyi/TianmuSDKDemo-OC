@@ -96,12 +96,8 @@
     int otherPlatPrice = 1;
     [_splashAd sendWinNotificationWithPrice:otherPlatPrice];
     
-    CGFloat bottomViewHeight;
-    if (kADSYCurveScreen) {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
-    } else {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height - [UIScreen mainScreen].bounds.size.width * (960 / 640.0);
-    }
+    CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
+    
     UIView *bottomView = [[UIView alloc] init];
     bottomView.backgroundColor = [UIColor whiteColor];
     bottomView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, bottomViewHeight);
@@ -119,12 +115,8 @@
     }
 //    发送竞价成功通知
     [_splashAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:100];
-    CGFloat bottomViewHeight;
-    if (kADSYCurveScreen) {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
-    } else {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height - [UIScreen mainScreen].bounds.size.width * (960 / 640.0);
-    }
+    CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
+    
     UIView *bottomView = [[UIView alloc] init];
     bottomView.backgroundColor = [UIColor whiteColor];
     bottomView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, bottomViewHeight);
@@ -146,12 +138,7 @@
     _splashAd.delegate = self;
     // 设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
     _splashAd.backgroundColor = [UIColor adsy_getColorWithImage:[UIImage imageNamed:@"750x1334.png"] withNewSize:[UIScreen mainScreen].bounds.size];
-    CGFloat bottomViewHeight;
-    if (kADSYCurveScreen) {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
-    } else {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height - [UIScreen mainScreen].bounds.size.width * (960 / 640.0);
-    }
+    CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;;
     UIView *bottomView = [[UIView alloc] init];
     bottomView.backgroundColor = [UIColor whiteColor];
     bottomView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, bottomViewHeight);

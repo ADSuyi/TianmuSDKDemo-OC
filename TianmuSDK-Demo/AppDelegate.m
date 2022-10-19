@@ -66,12 +66,7 @@
 }
 
 - (void)loadSplashAdView{
-    CGFloat bottomViewHeight;
-    if (kADSYCurveScreen) {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
-    } else {
-        bottomViewHeight = [UIScreen mainScreen].bounds.size.height - [UIScreen mainScreen].bounds.size.width * (960 / 640.0);
-    }
+    CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;;
     
     UIView *bottomView = [[UIView alloc] init];
     bottomView.backgroundColor = [UIColor whiteColor];

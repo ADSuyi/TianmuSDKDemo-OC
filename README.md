@@ -793,6 +793,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 
 ```obj-c
 #import <TianmuSDK/TianmuNativeExpressAd.h>
+#import <TianmuSDK/TianmuNativeExpressView.h>
 
 if(!_nativeAd) {
    // 1、信息流广告初始化

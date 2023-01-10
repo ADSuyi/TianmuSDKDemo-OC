@@ -1476,14 +1476,6 @@ oc代码激励视频示例：
 <div STYLE="page-break-after: always;"></div>
 <div STYLE="page-break-after: always;"></div> 
 
-## 作者
-suancai@admobile.top
-
-jiangyou@admobile.top
-
-bale@admobile.top
-
-xianggua@admobile.top
 
 ## 商务合作
 

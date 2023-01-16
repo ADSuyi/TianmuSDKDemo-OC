@@ -17,6 +17,9 @@
 - `TianmuSDK Objective-C Demo地址`[[TianmuSDK Objective-C Demo]](https://github.com/ADSuyi/TianmuSDKDemo-OC)
 - `TianmuSDK Swift Demo地址`[[TianmuSDK Swift Demo]](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
 
+将天目接入到聚合平台案例
+> [天目聚合到Topon中](https://gitee.com/admobile/toponadaptertianmudemo-ios)
+> [天目聚合到Gromore中](https://gitee.com/admobile/gromoreadapter-tianmu-ios)
 
 
 ## 2.1 采用cocoapods进行SDK的导入

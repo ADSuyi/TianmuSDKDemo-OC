@@ -1,31 +1,36 @@
 # TianmuSDK iOS接入文档 v1.3.5.1
 
 
-## 修订历史
+# 修订历史
 
 [SDK版本更新日志](https://doc.admobile.top/ssp/4changelog/2-iOSchangelog.html)
 
 
+# 1. 概述
+
+
 ## 1.1 概述
 
-尊敬的开发者朋友，欢迎您使用天目广告SDK。通过本文档，您可以在几分钟之内轻松完成广告的集成过程。
+尊敬的开发者朋友，欢迎您使用天目广告SDK。通过本文档及SDK对外Demo，您可以在几分钟之内轻松完成广告的集成过程。
+- [TianmuSDK Objective-C 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-OC)
+- [TianmuSDK Swift 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
 
-操作系统： iOS 9.0 及以上版本
+## 1.2 运行环境
 
-运行设备：iPhone
+- 开发工具：Xcode 12.0 及以上版本
+- 操作系统：iOS 9.0 及以上版本
+- 运行设备：iPhone
 
-- `TianmuSDK Objective-C Demo地址`[[TianmuSDK Objective-C Demo]](https://github.com/ADSuyi/TianmuSDKDemo-OC)
-- `TianmuSDK Swift Demo地址`[[TianmuSDK Swift Demo]](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
+## 1.3 将天目接入到聚合平台案例 
 
-将天目接入到聚合平台案例
-> [天目聚合到Topon中](https://gitee.com/admobile/toponadaptertianmudemo-ios)
-> 
-> [天目聚合到Gromore中](https://gitee.com/admobile/gromoreadapter-tianmu-ios)
+- [天目聚合到Topon](https://gitee.com/admobile/toponadaptertianmudemo-ios)
+- [天目聚合到Gromore](https://gitee.com/admobile/gromoreadapter-tianmu-ios)
 
+
+
+# 2. 接入流程
 
 ## 2.1 采用cocoapods进行SDK的导入
-
-推荐使用pod命令导入
 
 ```ruby
 pod 'TianmuSDK','~>1.3.5.1'
@@ -34,175 +39,159 @@ pod 'TianmuSDK','~>1.3.5.1'
 <div STYLE="page-break-after: always;"></div>
 
 
-
-<div STYLE="page-break-after: always;"></div>
-
-<div STYLE="page-break-after: always;"></div>
-
-
-## 3.1 工程环境配置
+## 2.2 工程环境配置
 
 1. 打开项目的 app target，查看 Build Settings 中的 Linking-Other Linker Flags 选项，确保含有 -ObjC 一值， 若没有则添加。
 
 2. 在项目的 app target 中，查看 Build Settings 中的 Build options - Enable Bitcode 选项， 设置为NO。 
-3. info.plist 添加支持 Http访问字段
 
-```obj-c
-<key>NSAppTransportSecurity</key>
-<dict>
-<key>NSAllowsArbitraryLoads</key>
-<true/>
-</dict>
-```
+4. info.plist 添加支持 Http访问字段
+    ```obj-c
+    <key>NSAppTransportSecurity</key>
+    <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+    </dict>
+    ```
 
 4. Info.plist 添加定位权限字段
-
-```obj-c
-NSLocationWhenInUseUsageDescription
-NSLocationAlwaysAndWhenInUseUsageDeion
-```
+    ```obj-c
+    NSLocationWhenInUseUsageDescription
+    NSLocationAlwaysAndWhenInUseUsageDeion
+    ```
 
 5. Info.plist推荐设置白名单，可提高广告收益
-
-```obj-c
-<key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>dianping</string>
-        <string>imeituan</string>
-        <string>com.suning.SuningEBuy</string>
-        <string>openapp.jdmobile</string>
-        <string>vipshop</string>
-        <string>snssdk141</string>
-        <string>ctrip</string>
-        <string>suning</string>
-        <string>qunariphone</string>
-        <string>QunarAlipay</string>
-        <string>qunaraphone</string>
-        <string>yohobuy</string>
-        <string>kaola</string>
-        <string>agoda</string>
-        <string>openapp.xzdz</string>
-        <string>beibeiapp</string>
-        <string>taobao</string>
-        <string>tmall</string>
-        <string>openjd</string>
-        <string>jhs</string>
-        <string>yhd</string>
-        <string>wireless1688</string>
-        <string>GomeEShop</string>
-        <string>wbmain</string>
-        <string>xhsdiscover</string>
-        <string>douyin</string>
-        <string>pinduoduo</string>
-        <string>jdmobile</string>
-        <string>tbopen</string>
-        <string>pddopen</string>
-        <string>mogujie</string>
-        <string>koubei</string>
-        <string>eleme</string>
-        <string>youku</string>
-        <string>gengmei</string>
-        <string>airbnb</string>
-        <string>alipays</string>
-        <string>didicommon</string>
-        <string>OneTravel</string>
-        <string>farfetchCN</string>
-        <string>farfetch</string>
-        <string>snssdk1112</string>
-        <string>snssdk1128</string>
-        <string>miguvideo</string>
-        <string>kfcapplinkurl</string>
-        <string>iqiyi</string>
-        <string>uclink</string>
-        <string>app.soyoung</string>
-    </array>
-```
-
+    ```obj-c
+    <key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>dianping</string>
+            <string>imeituan</string>
+            <string>com.suning.SuningEBuy</string>
+            <string>openapp.jdmobile</string>
+            <string>vipshop</string>
+            <string>snssdk141</string>
+            <string>ctrip</string>
+            <string>suning</string>
+            <string>qunariphone</string>
+            <string>QunarAlipay</string>
+            <string>qunaraphone</string>
+            <string>yohobuy</string>
+            <string>kaola</string>
+            <string>agoda</string>
+            <string>openapp.xzdz</string>
+            <string>beibeiapp</string>
+            <string>taobao</string>
+            <string>tmall</string>
+            <string>openjd</string>
+            <string>jhs</string>
+            <string>yhd</string>
+            <string>wireless1688</string>
+            <string>GomeEShop</string>
+            <string>wbmain</string>
+            <string>xhsdiscover</string>
+            <string>douyin</string>
+            <string>pinduoduo</string>
+            <string>jdmobile</string>
+            <string>tbopen</string>
+            <string>pddopen</string>
+            <string>mogujie</string>
+            <string>koubei</string>
+            <string>eleme</string>
+            <string>youku</string>
+            <string>gengmei</string>
+            <string>airbnb</string>
+            <string>alipays</string>
+            <string>didicommon</string>
+            <string>OneTravel</string>
+            <string>farfetchCN</string>
+            <string>farfetch</string>
+            <string>snssdk1112</string>
+            <string>snssdk1128</string>
+            <string>miguvideo</string>
+            <string>kfcapplinkurl</string>
+            <string>iqiyi</string>
+            <string>uclink</string>
+            <string>app.soyoung</string>
+        </array>
+    ```
 
 
-## 3.2 iOS14适配
 
-由于iOS14中对于权限和隐私内容有一定程度的修改，而且和广告业务关系较大，请按照如下步骤适配，如果未适配。不会导致运行异常或者崩溃等情况，但是会一定程度上影响广告收入。敬请知悉。
+## 2.3 iOS14 适配
+
+> 由于iOS14中对于权限和隐私内容有一定程度的修改，而且和广告业务关系较大，请按照如下步骤适配，如果未适配。不会导致运行异常或者崩溃等情况，但是会一定程度上影响广告收入。敬请知悉。
 
 1. 应用编译环境升级至 Xcode 12.0 及以上版本；
-3. 设置SKAdNetwork和IDFA权限；
+2. 设置IDFA权限；
 
 
 
-### 3.2.1 获取App Tracking Transparency授权（弹窗授权获取IDFA）
+### 2.3.1 获取App Tracking Transparency授权（弹窗授权获取IDFA）
 
-从 iOS 14 开始，在应用程序调用 App Tracking Transparency 向用户提跟踪授权请求之前，IDFA 将不可用。
+从 iOS 14.5 开始，在应用程序调用 App Tracking Transparency 向用户提跟踪授权请求之前，IDFA 将不可用。
 
-1. 更新 Info.plist，添加 NSUserTrackingUsageDescription 字段和自定义文案描述。
+1. 在 Info.plist 文件里添加 NSUserTrackingUsageDescription 字段和自定义文案描述
 
-   弹窗小字文案建议：
-
+    ```obj-c
+    <key>NSUserTrackingUsageDescription</key>
+    <string>获取标记权限向您提供更优质、安全的个性化服务及内容，未经同意我们不会用于其他目的；开启后，您也可以前往系统“设置-隐私 ”中随时关闭</string>
+    ```
+   
+   文案建议：
    - `获取标记权限向您提供更优质、安全的个性化服务及内容，未经同意我们不会用于其他目的；开启后，您也可以前往系统“设置-隐私 ”中随时关闭。`
    - `获取IDFA标记权限向您提供更优质、安全的个性化服务及内容；开启后，您也可以前往系统“设置-隐私 ”中随时关闭。`
 
-```objective-c
-<key>NSUserTrackingUsageDescription</key>
-<string>获取标记权限向您提供更优质、安全的个性化服务及内容，未经同意我们不会用于其他目的；开启后，您也可以前往系统“设置-隐私 ”中随时关闭</string>
-```
 
-2. 向用户申请权限。
 
-```objective-c
-#import <AppTrackingTransparency/AppTrackingTransparency.h>
-#import <AdSupport/AdSupport.h>
-...
-- (void)requestIDFA {
-  [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-    // 无需对授权状态进行处理
-  }];
-}
-// 建议启动App用户同意协议后就获取权限或者请求广告前获取
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-         // 针对iOS15中不弹窗被拒解决方案，方案1：经测试可能无效
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),             dispatch_get_main_queue(), ^{
-            // 用户同意协议后获取
-                      //[self requestIDFA];
-        //});
-}
-// 方案2：根据官方文档调整权限申请时机
-// 根据官方开发文档选择在此方法中进行权限申请
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // 用户同意协议后获取
-      [self requestIDFA];
-}
-// 建议方案1与2一起使用，可正常通过审核。
-```
+2. 向用户申请权限
+
+    ```obj-c
+    #import <AppTrackingTransparency/AppTrackingTransparency.h>
+    #import <AdSupport/AdSupport.h>
+    ...
+    
+    - (void)requestIDFA {
+      [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+        // 无需对授权状态进行处理
+      }];
+    }
+    ```
 
 
 <div STYLE="page-break-after: always;"></div>
 
-3. iOS15中不弹授权窗问题解决方法：
+3. 针对iOS15系统不弹出授权窗问题解决方法：
 
-```objective-c
-
-// 针对iOS15不弹窗问题解决方法，根据官方文档可将权限申请放在becomeActive方法
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // 用户同意协议后获取
-      [self requestIDFA];
-}
-```
+    ```obj-c
+    // 针对iOS15不弹窗问题解决方法，根据官方文档可将权限申请放在becomeActive方法
+    - (void)applicationDidBecomeActive:(UIApplication *)application {
+        // 用户同意协议后获取
+          [self requestIDFA];
+    }
+    ```
+    
+    参考：https://developer.apple.com/forums/thread/690607
 
 <div STYLE="page-break-after: alway;"></div>
 
-## 4.1 天目SDK的初始化
 
-`申请的appid必须与您的包名一一对应`
+# 3. 示例代码
 
+## 3.1 天目SDK的初始化
 
 ```obj-c
 #import <TianmuSDK/TianmuSDK.h>
+...
+
+// 申请的 appid 必须与您的包名一一对应
 [TianmuSDK initWithAppId:@"1001006" completionBlock:^(NSError * _Nullable error) {
-     if (error)
+     if (error){
          NSLog(@"初始化失败%@",error);
- }];
+     }
+}];
 ```
 
-获取TianmuSDK版本号
+若有获取SDK版本的需求，也可直接调用接口：
 
 ```obj-c
 //获取SDK版本号
@@ -212,7 +201,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 <div STYLE="page-break-after: always;"></div>
 
 
-## 4.2 开屏广告 - TianmuSplashAd
+## 3.2 开屏广告 - TianmuSplashAd
 
 开屏广告会在您的应用开启时加载展示，拥有固定展示时间，展示完毕后自动关闭并进入您的应用主界面。
 
@@ -479,7 +468,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 <div STYLE="page-break-after: always;"></div>
 
 
-## 4.3 Banner横幅广告 - TianmuBannerAdView
+## 3.3 Banner横幅广告 - TianmuBannerAdView
 
 Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向贯穿整个app页面；当用户与app互动时，Banner广告会停留在屏幕上，并可在一段时间后自动刷新。
 
@@ -631,7 +620,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 <div STYLE="page-break-after: always;"></div>
 
 
-## 4.4 模板信息流广告 - TianmuNativeExpressAd
+## 3.4 模板信息流广告 - TianmuNativeExpressAd
 
 模板信息流广告，具备上下图文，左右图文和纯图等样式，开发者可从天目管理后台设置广告位样式，模板信息流广告不得被遮挡。** **注意，信息流广告点击关闭时，开发者需要在- (void)tianmuExpressAdClosed:回调中将广告视图隐藏或移除**
 
@@ -899,7 +888,7 @@ if(!_nativeAd) {
 <div STYLE="page-break-after: always;"></div>
 
 
-## 4.5 插屏广告 - TianmuInterstitialAd
+## 3.5 插屏广告 - TianmuInterstitialAd
 
 插屏广告是移动广告的一种常见形式，在应用流程中弹出，当应用展示插屏广告时，用户可以选择点击广告，访问其目标网址，也可以将其关闭并返回应用。在应用执行流程的自然停顿点，适合投放这类广告。
 
@@ -1191,7 +1180,7 @@ OC请求插屏代码示例：
 <div STYLE="page-break-after: always;"></div> 
 
 
-## 4.6 激励视频广告 - TianmuRewardVodAd
+## 3.6 激励视频广告 - TianmuRewardVodAd
 
 将短视频融入到APP场景当中，用户观看短视频广告后可以给予一些应用内奖励。常出现在游戏的复活、任务等位置，或者网服类APP的一些增值服务场景。
 
@@ -1469,6 +1458,6 @@ oc代码激励视频示例：
 
 
 
-## 商务合作
+# 商务合作
 
 邮箱：yangyu@admobile.top

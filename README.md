@@ -421,7 +421,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | <center>属性</center> | <center>类型</center>  | <center>说明</center>|
 |:-----------|:--|:--------|
 | posId | NSString | 广告位id  |
-| viewController | UIViewController | 当前ViewController |
+| controller | UIViewController | 当前ViewController |
 | delegate | id\<TianmuNativeExpressAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
 | playMute | BOOL | 是否设置静音模式 |
@@ -553,7 +553,7 @@ if(!_nativeAd) {
 | <center>属性</center> | <center>类型</center>  | <center>说明</center>|
 |:-----------|:--|:--------|
 | posId | NSString | 广告位id  |
-| viewController | UIViewController | 当前ViewController |
+| controller | UIViewController | 当前ViewController |
 | delegate | id\<TianmuInterstitialAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
 | playMute | BOOL | 是否设置视频静音模式 |
@@ -601,7 +601,7 @@ if(!_nativeAd) {
 }
 
 #pragma mark - TianmuInterstitialAdDelegate
-**
+/**
  *  插屏广告数据请求成功
  */
 - (void)tianmuInterstitialSuccessToLoadAd:(TianmuInterstitialAd *)unifiedInterstitial {

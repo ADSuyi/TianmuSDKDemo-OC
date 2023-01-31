@@ -12,8 +12,10 @@
 ## 1.1 概述
 
 尊敬的开发者朋友，欢迎您使用天目广告SDK。通过本文档及SDK对外Demo，您可以在几分钟之内轻松完成广告的集成过程。
-- [TianmuSDK Objective-C 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-OC)
-- [TianmuSDK Swift 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
+- [Github: TianmuSDK Objective-C 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-OC)
+- [Gitee: TianmuSDK Objective-C 对外Demo](https://gitee.com/admobile/tianmu-advertising-sdk-ios)
+- [Github: TianmuSDK Swift 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
+- [Gitee: TianmuSDK Swift 对外Demo](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift)
 
 ## 1.2 运行环境
 
@@ -211,9 +213,11 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 推荐在 `AppDelegate`的 `didFinishLaunchingWithOptions`方法的 `return YES`之前调用开屏。
 
-`OC请求开屏代码示例：`[[开屏代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/master/TianmuSDK-Demo/AppDelegate.m)
+`Github: OC请求开屏代码示例：`[[开屏代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/master/TianmuSDK-Demo/AppDelegate.m)
+`Gitee: OC请求开屏代码示例：`[[开屏代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios/blob/master/TianmuSDK-Demo/AppDelegate.m)
 
-`Swift请求开屏代码示例：`[[开屏代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/AppDelegate.swift)
+`Github: Swift请求开屏代码示例：`[[开屏代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/AppDelegate.swift)
+`Gitee: Swift请求开屏代码示例：`[[开屏代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/AppDelegate.swift)
 
 
 > **冷启动**：应用进程不存在时，应用的初次启动
@@ -328,9 +332,11 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向贯穿整个app页面；当用户与app互动时，Banner广告会停留在屏幕上，并可在一段时间后自动刷新。
 
-`OC请求横幅代码示例：`[[横幅代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/BannderAd/TianmuBannderViewController.m)
+`Github: OC请求横幅代码示例：`[[横幅代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/master/TianmuSDK-Demo/TianmuAds/BannderAd/TianmuBannderViewController.m)
+`Gitee: OC请求横幅代码示例：`[[横幅代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios/blob/master/TianmuSDK-Demo/TianmuAds/BannderAd/TianmuBannderViewController.m)
 
-`Swift请求横幅代码示例：`[[横幅代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/TianmuBannderViewController.swift)
+`Github: Swift请求横幅代码示例：`[[横幅代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuBannderViewController.swift)
+`Gitee: Swift请求横幅代码示例：`[[横幅代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuBannderViewController.swift)
 
 
 ### 3.3.2 横幅广告API说明
@@ -410,9 +416,11 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 
 模板信息流广告，具备上下图文，左右图文和纯图等样式，开发者可从天目管理后台设置广告位样式，模板信息流广告不得被遮挡。** **注意，信息流广告点击关闭时，开发者需要在- (void)tianmuExpressAdClosed:回调中将广告视图隐藏或移除**
 
-`OC请求信息流广告代码示例：`[[信息流广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/NativeAd/TianmuNativeAdViewController.m)
+`Github: OC请求信息流广告代码示例：`[[信息流广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/master/TianmuSDK-Demo/TianmuAds/NativeAd/TianmuNativeAdViewController.m)
+`Gitee: OC请求信息流广告代码示例：`[[信息流广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios/blob/master/TianmuSDK-Demo/TianmuAds/NativeAd/TianmuNativeAdViewController.m)
 
-`Swift请求信息流广告代码示例：`[[信息流广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/TianmuNativeAdViewController.swift)
+`Github: Swift请求信息流广告代码示例：`[[信息流广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuNativeAdViewController.swift)
+`Gitee: Swift请求信息流广告代码示例：`[[信息流广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuNativeAdViewController.swift)
 
 ### 3.4.2 信息流广告API说明
 
@@ -542,9 +550,11 @@ if(!_nativeAd) {
 
 插屏广告是移动广告的一种常见形式，在应用流程中弹出，当应用展示插屏广告时，用户可以选择点击广告，访问其目标网址，也可以将其关闭并返回应用。在应用执行流程的自然停顿点，适合投放这类广告。
 
-`OC请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/InterstitialAd/TianmuInterstitialAdViewController.m)
+`Github: OC请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/master/TianmuSDK-Demo/TianmuAds/InterstitialAd/TianmuInterstitialAdViewController.m)
+`Gitee: OC请求插屏广告代码示例：`[[插屏广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios/blob/master/TianmuSDK-Demo/TianmuAds/InterstitialAd/TianmuInterstitialAdViewController.m)
 
-`Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/TianmuInterstitialAdViewController.swift)
+`Github: Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuInterstitialAdViewController.swift)
+`Gitee: Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuInterstitialAdViewController.swift)
 
 ### 3.5.2 插屏广告API说明
 
@@ -646,9 +656,11 @@ if(!_nativeAd) {
 
 将短视频融入到APP场景当中，用户观看短视频广告后可以给予一些应用内奖励。常出现在游戏的复活、任务等位置，或者网服类APP的一些增值服务场景。
 
-`OC请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/main/TianmuSDK-Demo/TianmuAds/RewardVodAd/ADTianmuRewardVodAdViewController.m)
+`Github: OC请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-OC/blob/master/TianmuSDK-Demo/TianmuAds/RewardVodAd/ADTianmuRewardVodAdViewController.m)
+`Gitee: OC请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios/blob/master/TianmuSDK-Demo/TianmuAds/RewardVodAd/ADTianmuRewardVodAdViewController.m)
 
-`Swift请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/main/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
+`Github: Swift请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
+`Gitee: Swift请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
 
 ### 3.6.2 激励视频广告API说明
 

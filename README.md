@@ -3,7 +3,7 @@
 
 # 修订历史
 
-[SDK版本更新日志](https://doc.admobile.top/ssp/4changelog/2-iOSchangelog.html)
+[SDK版本更新日志](https://doc.admobile.top/ssp/pages/tmsdkchios/)
 
 
 # 1. 概述

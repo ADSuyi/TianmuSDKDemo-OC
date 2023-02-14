@@ -433,7 +433,6 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | delegate | id\<TianmuNativeExpressAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
 | playMute | BOOL | 是否设置静音模式 |
-| autoPlay | BOOL | 是否设置自动播放模式 |
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|

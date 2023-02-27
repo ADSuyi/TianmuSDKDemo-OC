@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.0.0.1
+# TianmuSDK iOS接入文档 v2.0.1.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.0.0.1'
+pod 'TianmuSDK','~>2.0.1.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -432,7 +432,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | controller | UIViewController | 当前ViewController |
 | delegate | id\<TianmuNativeExpressAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
-| playMute | BOOL | 是否设置静音模式 |
+| playMute | BOOL | 是否设置静音模式，默认是true |
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
@@ -565,7 +565,7 @@ if(!_nativeAd) {
 | controller | UIViewController | 当前ViewController |
 | delegate | id\<TianmuInterstitialAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
-| playMute | BOOL | 是否设置视频静音模式 |
+| playMute | BOOL | 是否设置视频静音模式,默认false |
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
@@ -671,7 +671,7 @@ if(!_nativeAd) {
 | controller | UIViewController | 当前ViewController |
 | delegate | id\<TianmuRewardVodAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
-| playMute | BOOL | 是否设置静音模式 |
+| playMute | BOOL | 是否设置静音模式,默认false |
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|

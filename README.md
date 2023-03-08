@@ -576,7 +576,7 @@ if(!_nativeAd) {
 | sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
 | sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
-**TianmuNativeExpressDelegate**：插屏代理方法
+**TianmuInterstitialAdDelegate**：插屏代理方法
 
 | <center>回调函数</center> | <center>回调说明</center>|
 |:-----------|:--------|
@@ -700,7 +700,7 @@ if(!_nativeAd) {
 | tianmuRewardVodAdAdVideoPlayFinish: | 激励视频广告视频播放结束 |
 | tianmuRewardVodAdCloseLandingPage: | 激励视频广告关闭落地页 |
 
-### 3.6.3 请求插屏代码示例
+### 3.6.3 请求激励视频代码示例
 
 ```obj-c
 #import <TianmuSDK/TianmuRewardVodAd.h>

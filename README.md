@@ -567,6 +567,7 @@ if(!_nativeAd) {
 | delegate | id\<TianmuInterstitialAdDelegate> | 委托对象 |
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
 | playMute | BOOL | 是否设置视频静音模式,默认false |
+| disableMotion                  | bool | 屏蔽摇一摇、晃一晃 |
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|

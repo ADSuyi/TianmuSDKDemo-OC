@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.0.1.2
+# TianmuSDK iOS接入文档 v2.0.2.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.0.1.2'
+pod 'TianmuSDK','~>2.0.2.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -236,6 +236,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 | backgroundColor           | UIColor | 用于开屏请求过渡，可将启动图转为color传入，默认为透明|
 | viewController            | UIViewController | 使用 controller present 落地页，默认获取当前window最上层控制器 |
 | skipView                  | UIView | 自定义跳过按钮，可以通过此接口替换开屏广告的跳过按钮样式 |
+| disableMotion                  | bool | 屏蔽摇一摇、晃一晃 |
 
 
 | <center>接口</center> | <center>说明</center>|

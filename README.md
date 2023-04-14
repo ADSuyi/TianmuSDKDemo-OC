@@ -725,7 +725,7 @@ if(!_nativeAd) {
 }
 
 
-**
+/**
  *  激励视频广告数据请求成功
  */
 - (void)tianmuRewardVodAdSuccessToLoadAd:(TianmuRewardVodAd *)rewardVodAd {

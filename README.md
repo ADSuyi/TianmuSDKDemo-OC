@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.0.2.1
+# TianmuSDK iOS接入文档 v2.0.3.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.0.2.1'
+pod 'TianmuSDK','~>2.0.3.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -244,7 +244,9 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 | loadAndShowInWindow:withBottomView: | 加载并展示开屏<br/>window：开屏广告展示的window<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
 | - |  |
 | loadAdWithBottomView: | 加载开屏广告<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
-| showInWindow:withBottomView： | 展示开屏<br/>window：开屏广告展示的window<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
+| loadAd | 加载开屏广告（接口即将废弃，请使用loadAdWithBottomView:）  |
+| showInWindow:withBottomView： | 展示开屏（接口即将废弃，请使用showInWindow:）<br/>window：开屏广告展示的window<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
+| showInWindow: | 展示开屏<br/>window：开屏广告展示的window<br/> |
 | - |     |
 | bidPrice | 返回广告的出价，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
@@ -568,6 +570,7 @@ if(!_nativeAd) {
 | tolerateTimeout | NSInteger | 请求超时时间,默认为4s,需要设置3s及以上 |
 | playMute | BOOL | 是否设置视频静音模式,默认false |
 | disableMotion                  | bool | 屏蔽摇一摇、晃一晃 |
+| supportScreenType                  | TianmuAdSupportScreenType | 支持屏幕方向，默认竖屏 |
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|

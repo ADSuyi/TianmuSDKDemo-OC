@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.0.3.1
+# TianmuSDK iOS接入文档 v2.0.4.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.0.3.1'
+pod 'TianmuSDK','~>2.0.4.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -202,10 +202,21 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 <div STYLE="page-break-after: always;"></div>
 
+## 3.2 个性化开关
 
-## 3.2 开屏广告 - TianmuSplashAd
+ADSuyi的个性化开关可统一控制第三方广告SDK的个性化开关接口，目前支持天目、穿山甲、优量汇、百度、快手、汇量、Gromore;
 
-### 3.2.1 开屏广告介绍
+```obj-c
+// 是否开启个性化广告；默认YES，建议初始化SDK之前设置
+ADSuyiSDK.enablePersonalAd = NO;
+```
+
+<div STYLE="page-break-after: always;"></div>
+
+
+##  开屏广告 - TianmuSplashAd
+
+### 3.3.1 开屏广告介绍
 
 开屏广告会在您的应用开启时加载展示，拥有固定展示时间，展示完毕后自动关闭并进入您的应用主界面。
 
@@ -224,7 +235,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 > 
 > **热启动**：应用通过home键暂时退到后台，在该应用进程还存在时，重新回到应用
 
-### 3.2.2 开屏广告API说明
+### 3.3.2 开屏广告API说明
 
 **TianmuSplashAd**: 开屏广告的加载类
 
@@ -272,7 +283,7 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 <div STYLE="page-break-after: always;"></div>
 
-### 3.2.3 请求开屏代码示例
+### 3.3.3 请求开屏代码示例
 
 ```obj-c
 #import <TianmuSDK/TianmuSplashAd.h>
@@ -329,9 +340,9 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 <div STYLE="page-break-after: always;"></div>
 
 
-## 3.3 Banner横幅广告 - TianmuBannerAdView
+## 3.4 Banner横幅广告 - TianmuBannerAdView
 
-### 3.3.1 Banner横幅广告介绍
+### 3.4.1 Banner横幅广告介绍
 
 Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向贯穿整个app页面；当用户与app互动时，Banner广告会停留在屏幕上，并可在一段时间后自动刷新。
 
@@ -342,7 +353,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 - `Gitee: Swift请求横幅代码示例：`[[横幅代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuBannderViewController.swift)
 
 
-### 3.3.2 横幅广告API说明
+### 3.4.2 横幅广告API说明
 
 **TianmuBannerAdView**: 横幅广告的加载类
 
@@ -368,7 +379,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | tianmuBannerViewWillClose: | 被用户关闭时调用 |
 | tianmuBannerViewCloseLandingPage: | 被用户关闭广告落地页调用 |
 
-### 3.3.3 请求横幅代码示例
+### 3.4.3 请求横幅代码示例
 
 ```obj-c
 #import <TianmuSDK/TianmuBannerAdView.h>
@@ -413,9 +424,9 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 
 <div STYLE="page-break-after: always;"></div>
 
-## 3.4 信息流广告 - TianmuNativeExpressAd
+## 3.5 信息流广告 - TianmuNativeExpressAd
 
-### 3.4.1 信息流广告介绍
+### 3.5.1 信息流广告介绍
 
 模板信息流广告，具备上下图文，左右图文和纯图等样式，开发者可从天目管理后台设置广告位样式，模板信息流广告不得被遮挡。** **注意，信息流广告点击关闭时，开发者需要在- (void)tianmuExpressAdClosed:回调中将广告视图隐藏或移除**
 
@@ -425,7 +436,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 - `Github: Swift请求信息流广告代码示例：`[[信息流广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuNativeAdViewController.swift)
 - `Gitee: Swift请求信息流广告代码示例：`[[信息流广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuNativeAdViewController.swift)
 
-### 3.4.2 信息流广告API说明
+### 3.5.2 信息流广告API说明
 
 **TianmuNativeExpressAd**: 信息流广告的加载类
 
@@ -450,17 +461,17 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 |:-----------|:--------|
 | tianmuExpressAdSucceedToLoad:views: | 信息流广告加载成功 |
 | tianmuExpressAdFailToLoad:error: | 信息流广告加载失败 |
-| tianmuExpressAdRenderFail:error: | 模板信息流广告渲染失败 |
-| tianmuExpressAdRenderSucceed:adView: | 模板信息流广告渲染成功 |
-| tianmuExpressAdClosed:adView: | 模板信息流广告关闭 |
-| tianmuExpressAdClick:adView: | 模板信息流广告点击 |
-| tianmuExpressAdDidExpourse:adView: | 模板信息流广告展示 |
-| tianmuExpressAdDidCloseLandingPage:adView: | 模板信息流广告关闭落地页 |
+| tianmuExpressAdRenderFail:error: | 信息流广告渲染失败 |
+| tianmuExpressAdRenderSucceed:adView: | 信息流广告渲染成功 |
+| tianmuExpressAdClosed:adView: | 信息流广告关闭 |
+| tianmuExpressAdClick:adView: | 信息流广告点击 |
+| tianmuExpressAdDidExpourse:adView: | 信息流广告展示 |
+| tianmuExpressAdDidCloseLandingPage:adView: | 信息流广告关闭落地页 |
 | 视频信息流相关回调 | |
-| tianmuExpressAdVideoPlay:adView: | 模板信息流视频广告开始播放 |
-| tianmuExpressAdVideoPlayFail:error: | 模板信息流视频广告视频播放失败 |
-| tianmuExpressAdVideoPause:adView: | 模板信息流视频广告视频暂停 |
-| tianmuExpressAdVideoFinish:adView: | 模板信息流视频广告视频播放完成 |
+| tianmuExpressAdVideoPlay:adView: | 信息流视频广告开始播放 |
+| tianmuExpressAdVideoPlayFail:error: | 信息流视频广告视频播放失败 |
+| tianmuExpressAdVideoPause:adView: | 信息流视频广告视频暂停 |
+| tianmuExpressAdVideoFinish:adView: | 信息流视频广告视频播放完成 |
 
 **UIView\<TianmuExpressViewRegisterProtocol>**：信息流视图
 | <center>属性</center> | <center>类型</center>  | <center>说明</center>|
@@ -476,10 +487,10 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | tianmu_mediaViewForWidth: | 获取视频视图，如果是模版广告则为nil |
 | tianmu_platformLogoImageDarkMode:loadImageBlock: | 获取logo图片 |
 | tianmu_close | 自渲染信息流关闭按钮响应方法（会回调关闭） |
-| tianmu_setFrame: | 模板信息流重设广告尺寸 |
+| tianmu_setFrame: | 信息流重设广告尺寸 |
 
 
-### 3.4.3 请求信息流代码示例
+### 3.5.3 请求信息流代码示例
 
 ```obj-c
 #import <TianmuSDK/TianmuNativeExpressAd.h>
@@ -499,16 +510,20 @@ if(!_nativeAd) {
 // 4、代理回调
 #pragma mark - TianmuNativeExpressAdDelegate
 
-// 模板信息流广告加载成功
+// 信息流广告加载成功
 - (void)tianmuExpressAdSucceedToLoad:(TianmuNativeExpressAd *)expressAd views:(NSArray<__kindof UIView<TianmuExpressViewRegisterProtocol> *> *)views {
     for (TianmuNativeExpressView *adView in views) {
+        if (adView.renderType == TianmuAdRenderTypeNative) {
+            //如果是自渲染信息流 则自行布局
+            [self setUpUnifiedTopImageNativeAdView:adView];
+        }
         [adView tianmu_registViews:@[adView]];
     }
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
 }
 
-// 模板信息流广告加载失败
+// 信息流广告加载失败
 - (void)tianmuExpressAdFailToLoad:(TianmuNativeExpressAd *)expressAd error:(NSError *)error {
     NSLog(@"信息流广告加载失败%@",error);
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -517,7 +532,7 @@ if(!_nativeAd) {
     });
 }
 
-// 模板信息流广告渲染成功
+// 信息流广告渲染成功
 - (void)tianmuExpressAdRenderSucceed:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
     dispatch_async(dispatch_get_main_queue(), ^{
         for (int i = 0; i < 6; i ++) {
@@ -528,12 +543,12 @@ if(!_nativeAd) {
     });
 }
 
-// 模板信息流广告渲染失败
+// 信息流广告渲染失败
 - (void)tianmuExpressAdRenderFail:(TianmuNativeExpressAd *)expressAd error:(NSError *)error {
     [self.view makeToast:[NSString stringWithFormat:@"信息流渲染失败：%@",error]];
 }
 
-// 模板信息流广告关闭
+// 信息流广告关闭
 - (void)tianmuExpressAdClosed:(TianmuNativeExpressAd *)expressAd adView:(UIView<TianmuExpressViewRegisterProtocol> *)expressAdView {
     [self.items removeObject:expressAdView];
     [self.tableView reloadData];
@@ -546,9 +561,9 @@ if(!_nativeAd) {
 <div STYLE="page-break-after: always;"></div>
 
 
-## 3.5 插屏广告 - TianmuInterstitialAd
+## 3.6 插屏广告 - TianmuInterstitialAd
 
-### 3.5.1 插屏广告介绍
+### 3.6.1 插屏广告介绍
 
 插屏广告是移动广告的一种常见形式，在应用流程中弹出，当应用展示插屏广告时，用户可以选择点击广告，访问其目标网址，也可以将其关闭并返回应用。在应用执行流程的自然停顿点，适合投放这类广告。
 
@@ -558,7 +573,7 @@ if(!_nativeAd) {
 - `Github: Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuInterstitialAdViewController.swift)
 - `Gitee: Swift请求插屏广告代码示例：`[[插屏广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/TianmuInterstitialAdViewController.swift)
 
-### 3.5.2 插屏广告API说明
+### 3.6.2 插屏广告API说明
 
 **TianmuInterstitialAd**: 插屏广告的加载类
 
@@ -600,7 +615,7 @@ if(!_nativeAd) {
 | tianmuInterstitialAdVideoPause: | 插屏视频广告视频暂停 |
 | tianmuInterstitialAdVideoFinish: | 插屏视频广告视频播放完成 |
 
-### 3.5.3 请求插屏代码示例
+### 3.6.3 请求插屏代码示例
 
 ```obj-c
 #import <TianmuSDK/TianmuInterstitialAd.h>
@@ -654,9 +669,9 @@ if(!_nativeAd) {
 <div STYLE="page-break-after: always;"></div>
 
 
-## 3.6 激励视频广告 - TianmuRewardVodAd
+## 3.7 激励视频广告 - TianmuRewardVodAd
 
-### 3.6.1 激励视频广告介绍
+### 3.7.1 激励视频广告介绍
 
 将短视频融入到APP场景当中，用户观看短视频广告后可以给予一些应用内奖励。常出现在游戏的复活、任务等位置，或者网服类APP的一些增值服务场景。
 
@@ -666,7 +681,7 @@ if(!_nativeAd) {
 - `Github: Swift请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://github.com/ADSuyi/TianmuSDKDemo-Swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
 - `Gitee: Swift请求激励视频广告代码示例：`[[激励视频广告代码示例]](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift/blob/master/TianmuSDK-iOS-Swift/TianmuAds/ADTianmuRewardVodAdViewController.swift)
 
-### 3.6.2 激励视频广告API说明
+### 3.7.2 激励视频广告API说明
 
 **TianmuRewardVodAd**: 激励视频广告的加载类
 
@@ -705,7 +720,7 @@ if(!_nativeAd) {
 | tianmuRewardVodAdAdVideoPlayFinish: | 激励视频广告视频播放结束 |
 | tianmuRewardVodAdCloseLandingPage: | 激励视频广告关闭落地页 |
 
-### 3.6.3 请求激励视频代码示例
+### 3.7.3 请求激励视频代码示例
 
 ```obj-c
 #import <TianmuSDK/TianmuRewardVodAd.h>

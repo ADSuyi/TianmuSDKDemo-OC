@@ -204,11 +204,9 @@ NSString *sdkVersion = [TianmuSDK getSDKVersion];
 
 ## 3.2 个性化开关
 
-ADSuyi的个性化开关可统一控制第三方广告SDK的个性化开关接口，目前支持天目、穿山甲、优量汇、百度、快手、汇量、Gromore;
-
 ```obj-c
 // 是否开启个性化广告；默认YES，建议初始化SDK之前设置
-ADSuyiSDK.enablePersonalAd = NO;
+TianmuSDK.enablePersonalAd = NO;
 ```
 
 <div STYLE="page-break-after: always;"></div>

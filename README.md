@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.0.4.1
+# TianmuSDK iOS接入文档 v2.0.5.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.0.4.1'
+pod 'TianmuSDK','~>2.0.5.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -364,6 +364,11 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
 | loadRequest | 开始请求广告 |
+| - |     |
+| bidPrice | 返回广告的出价，单位：分 |
+| bidFloor | 返回广告的底价，单位：分 |
+| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
+| sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
 **TianmuBannerAdViewDelegate**：横幅代理方法
 

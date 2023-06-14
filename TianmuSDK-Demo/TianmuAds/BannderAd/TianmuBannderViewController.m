@@ -170,7 +170,7 @@
  *  当接收服务器返回的广告数据成功后调用该函数
  */
 - (void)tianmuBannerSuccessLoad:(TianmuBannerAdView *)tianmuBannerView {
-   // 重要‼️ 如果支持自刷新，需要处理自刷新的竟赢上报
+    // 重要‼️ 如果是竞价广告位，且支持自刷新，需要处理自刷新的竟赢上报
 }
 
 /**

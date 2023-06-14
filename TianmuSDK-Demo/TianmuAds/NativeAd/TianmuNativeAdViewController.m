@@ -131,7 +131,7 @@
         [_nativeAd sendWinNotificationWithAdView:adView price:otherPlatPrice];
         [adView tianmu_registViews:@[adView]];
         ADSuyiAsyncMainBlock(^{
-            [_adViewArray removeObject:adView];
+            [self->_adViewArray removeObject:adView];
         });
     }
 }
@@ -141,7 +141,7 @@
         [self.nativeAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonOther) winnerPirce:100 AdView:adView];
         [adView tianmu_registViews:@[adView]];
         ADSuyiAsyncMainBlock(^{
-            [_adViewArray removeObject:adView];
+            [self->_adViewArray removeObject:adView];
         });
     }
 }

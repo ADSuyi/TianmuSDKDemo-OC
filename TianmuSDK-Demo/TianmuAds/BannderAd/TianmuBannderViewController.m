@@ -36,10 +36,76 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGFloat margin = self.view.bounds.size.width/5 - 320/5;
+    
+    UIButton *loadAndShowBtn = [UIButton new];
+    [loadAndShowBtn setTitle:@"普通请求" forState:(UIControlStateNormal)];
+    [loadAndShowBtn setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
+    loadAndShowBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    loadAndShowBtn.backgroundColor = UIColor.lightGrayColor;
+    loadAndShowBtn.clipsToBounds = YES;
+    loadAndShowBtn.layer.cornerRadius = 3;
+    [loadAndShowBtn addTarget:self action:@selector(loadNomarlAd) forControlEvents:(UIControlEventTouchUpInside)];
+    loadAndShowBtn.frame = CGRectMake(margin, self.view.bounds.size.height - 60, 80, 30);
+    [self.view addSubview:loadAndShowBtn];
+    [self.view bringSubviewToFront:loadAndShowBtn];
+    
+    UIButton *loadBtn = [UIButton new];
+    [loadBtn setTitle:@"竞价请求" forState:(UIControlStateNormal)];
+    [loadBtn setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
+    loadBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    loadBtn.backgroundColor = UIColor.lightGrayColor;
+    loadBtn.clipsToBounds = YES;
+    loadBtn.layer.cornerRadius = 3;
+    [loadBtn addTarget:self action:@selector(loadBidAd) forControlEvents:(UIControlEventTouchUpInside)];
+    loadBtn.frame = CGRectMake(margin*2 + 80, self.view.bounds.size.height - 60, 80, 30);
+    [self.view addSubview:loadBtn];
+    [self.view bringSubviewToFront:loadBtn];
+    
+    UIButton *bidWinBtn = [UIButton new];
+    [bidWinBtn setTitle:@"竞价成功" forState:(UIControlStateNormal)];
+    [bidWinBtn setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
+    bidWinBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    bidWinBtn.backgroundColor = UIColor.lightGrayColor;
+    bidWinBtn.clipsToBounds = YES;
+    bidWinBtn.layer.cornerRadius = 3;
+    [bidWinBtn addTarget:self action:@selector(bidWin) forControlEvents:(UIControlEventTouchUpInside)];
+    bidWinBtn.frame = CGRectMake(160 + margin*3, self.view.bounds.size.height - 60, 80, 30);
+    [self.view addSubview:bidWinBtn];
+    [self.view bringSubviewToFront:bidWinBtn];
+    
+    UIButton *bidFailBtn = [UIButton new];
+    [bidFailBtn setTitle:@"竞价失败" forState:(UIControlStateNormal)];
+    [bidFailBtn setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
+    bidFailBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    bidFailBtn.backgroundColor = UIColor.lightGrayColor;
+    bidFailBtn.clipsToBounds = YES;
+    bidFailBtn.layer.cornerRadius = 3;
+    [bidFailBtn addTarget:self action:@selector(bidFail) forControlEvents:(UIControlEventTouchUpInside)];
+    bidFailBtn.frame = CGRectMake(margin*4 + 240, self.view.bounds.size.height - 60, 80, 30);
+    [self.view addSubview:bidFailBtn];
+    [self.view bringSubviewToFront:bidFailBtn];
+}
+- (void)loadNomarlAd{
     AdSuyiBannerItem *item = self.array[0];
     [self loadBannerWithRate:item.rate posId:item.posId];
 }
 
+- (void)loadBidAd{
+    AdSuyiBannerItem *item = self.array[0];
+    [self loadBannerWithRate:item.rate posId:@"9012784e6c3b"];
+
+}
+
+- (void)bidWin{
+    [self.bannerAd sendWinNotificationWithPrice:self.bannerAd.bidPrice];
+}
+
+- (void)bidFail{
+    [self.bannerAd sendWinFailNotificationReason:TianmuAdBiddingLossReasonOther winnerPirce:100];
+    
+}
 #pragma mark - Touch event
 
 - (void)clickLoadBannerButton:(UIButton *)btn {
@@ -104,7 +170,7 @@
  *  当接收服务器返回的广告数据成功后调用该函数
  */
 - (void)tianmuBannerSuccessLoad:(TianmuBannerAdView *)tianmuBannerView {
-    
+   // 重要‼️ 如果支持自刷新，需要处理自刷新的竟赢上报
 }
 
 /**

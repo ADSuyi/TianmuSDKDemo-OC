@@ -88,6 +88,11 @@
     self.interstitialAd.controller = self;
     self.interstitialAd.posId   =   @"682f5d1cb439";
     self.interstitialAd.delegate = self;
+    // 是否开启倒计时关闭
+//    self.interstitialAd.isAutoClose = YES;
+    // 设置倒计时关闭时长
+//    self.interstitialAd.autoCloseTime = 10;
+    // 设置倒计时关闭时长
     [self.interstitialAd loadAdData];
 }
 

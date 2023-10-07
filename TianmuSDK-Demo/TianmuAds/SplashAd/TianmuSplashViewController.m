@@ -94,8 +94,7 @@
     }
     // 发送竞价成功通知
     // 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分
-    NSInteger otherPlatPrice = [_splashAd bidFloor];
-    [_splashAd sendWinNotificationWithPrice:otherPlatPrice];
+    [_splashAd sendWinNotificationWithPrice:[_splashAd bidFloor]];
     
     CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
     

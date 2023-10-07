@@ -127,8 +127,7 @@
 
 - (void)bidWin {
     for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
-        int otherPlatPrice = 1;
-        [_nativeAd sendWinNotificationWithAdView:adView price:otherPlatPrice];
+        [_nativeAd sendWinNotificationWithAdView:adView price:adView.bidFloor];
         [adView tianmu_registViews:@[adView]];
         ADSuyiAsyncMainBlock(^{
             [self->_adViewArray removeObject:adView];

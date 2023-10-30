@@ -135,7 +135,7 @@
         [self.view makeToast:@"当前广告不是竞价广告"];
         return;
     }
-    if (_isReady) {
+    if (_isReady && _nativeAd) {
         for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
             [_nativeAd sendWinNotificationWithAdView:adView price:adView.bidFloor];
             [adView tianmu_registViews:@[adView]];
@@ -153,7 +153,7 @@
         [self.view makeToast:@"当前广告不是竞价广告"];
         return;
     }
-    if (_isReady) {
+    if (_isReady && _nativeAd) {
         for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
             [self.nativeAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonOther) winnerPirce:100 AdView:adView];
             [adView tianmu_registViews:@[adView]];

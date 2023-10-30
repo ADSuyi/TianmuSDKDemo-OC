@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _isNormalAd = YES;
+    
     self.view.backgroundColor = [UIColor colorWithRed:225/255.0 green:233/255.0 blue:239/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIButton *loadBtn = [UIButton new];

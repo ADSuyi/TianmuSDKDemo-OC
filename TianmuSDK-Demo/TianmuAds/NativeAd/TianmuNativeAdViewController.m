@@ -40,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _isNormalAd = YES;
+    
     UIButton *setAdConfigBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [setAdConfigBtn setTitle:@"切换" forState:(UIControlStateNormal)];
     [setAdConfigBtn setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];

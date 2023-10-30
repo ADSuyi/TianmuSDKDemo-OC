@@ -141,7 +141,9 @@
                 [self->_adViewArray removeObject:adView];
             });
         }
+        return;
     }
+    [self.view makeToast:@"广告未准备好"];
 }
 
 - (void)bidFail {
@@ -157,7 +159,9 @@
                 [self->_adViewArray removeObject:adView];
             });
         }
+        return;
     }
+    [self.view makeToast:@"广告未准备好"];
 }
 
 - (void)setUI{

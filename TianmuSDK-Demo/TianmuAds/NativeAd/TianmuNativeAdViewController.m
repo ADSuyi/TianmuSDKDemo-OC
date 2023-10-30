@@ -20,6 +20,7 @@
 {
     NSMutableArray <UIView<TianmuExpressViewRegisterProtocol> *>*_adViewArray;
     BOOL _isNormalAd;
+    BOOL _isReady;
 }
 
 @property (nonatomic ,strong) TianmuNativeExpressAd  *nativeAd;
@@ -115,33 +116,47 @@
 
 - (void)loadNomarlAd {
     _isNormalAd = YES;
+    _isReady = NO;
     _nativeAd.posId = self.posId;
     [_nativeAd loadAdWithCount:3];
 }
 
 - (void)loadBidAd {
     _isNormalAd = NO;
+    _isReady = NO;
     _nativeAd.posId = self.bidPosId;
     [_nativeAd loadAdWithCount:3];
 }
 
 - (void)bidWin {
-    for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
-        [_nativeAd sendWinNotificationWithAdView:adView price:adView.bidFloor];
-        [adView tianmu_registViews:@[adView]];
-        ADSuyiAsyncMainBlock(^{
-            [self->_adViewArray removeObject:adView];
-        });
+    if (_isNormalAd) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
+        return;
+    }
+    if (_isReady) {
+        for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
+            [_nativeAd sendWinNotificationWithAdView:adView price:adView.bidFloor];
+            [adView tianmu_registViews:@[adView]];
+            ADSuyiAsyncMainBlock(^{
+                [self->_adViewArray removeObject:adView];
+            });
+        }
     }
 }
 
 - (void)bidFail {
-    for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
-        [self.nativeAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonOther) winnerPirce:100 AdView:adView];
-        [adView tianmu_registViews:@[adView]];
-        ADSuyiAsyncMainBlock(^{
-            [self->_adViewArray removeObject:adView];
-        });
+    if (_isNormalAd) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
+        return;
+    }
+    if (_isReady) {
+        for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
+            [self.nativeAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonOther) winnerPirce:100 AdView:adView];
+            [adView tianmu_registViews:@[adView]];
+            ADSuyiAsyncMainBlock(^{
+                [self->_adViewArray removeObject:adView];
+            });
+        }
     }
 }
 
@@ -251,6 +266,7 @@
 
 // 模板信息流广告加载成功
 - (void)tianmuExpressAdSucceedToLoad:(TianmuNativeExpressAd *)expressAd views:(NSArray<__kindof UIView<TianmuExpressViewRegisterProtocol> *> *)views {
+    _isReady = YES;
     for (TianmuNativeExpressView *adView in views) {
         if (adView.renderType == TianmuAdRenderTypeNative) {
             [self setUpUnifiedTopImageNativeAdView:adView];

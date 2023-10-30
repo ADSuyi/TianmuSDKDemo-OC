@@ -8,6 +8,7 @@
 #import "TianmuBannderViewController.h"
 #import <ADSuyiKit/ADSuyiKitMacros.h>
 #import <TianmuSDK/TianmuBannerAdView.h>
+#import "UIView+Toast.h"
 
 @interface AdSuyiBannerItem : NSObject
 
@@ -22,7 +23,10 @@
 @end
 
 
-@interface TianmuBannderViewController()<TianmuBannerAdViewDelegate>
+@interface TianmuBannderViewController()<TianmuBannerAdViewDelegate> {
+    BOOL _isHeadBidding;
+    BOOL _isSucceed;
+}
 
 @property (nonatomic, copy) NSArray<AdSuyiBannerItem *> *array;
 
@@ -88,23 +92,43 @@
     [self.view bringSubviewToFront:bidFailBtn];
 }
 - (void)loadNomarlAd{
+    _isHeadBidding = NO;
+    _isSucceed = NO;
     AdSuyiBannerItem *item = self.array[0];
     [self loadBannerWithRate:item.rate posId:item.posId];
 }
 
 - (void)loadBidAd{
+    _isHeadBidding = YES;
+    _isSucceed = NO;
     AdSuyiBannerItem *item = self.array[0];
     [self loadBannerWithRate:item.rate posId:@"9012784e6c3b"];
 
 }
 
 - (void)bidWin{
+    if (!_isHeadBidding) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
+        return;
+    }
+    if (!_isSucceed || !_bannerAd) {
+        [self.view makeToast:[NSString stringWithFormat:@"横幅广告未加载成功"]];
+        return;
+    }
     // 发送竞价成功通知
     // 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分
     [self.bannerAd sendWinNotificationWithPrice:[self.bannerAd bidFloor]];
 }
 
 - (void)bidFail{
+    if (!_isHeadBidding) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
+        return;
+    }
+    if (!_isSucceed || !_bannerAd) {
+        [self.view makeToast:[NSString stringWithFormat:@"横幅广告未加载成功"]];
+        return;
+    }
     [self.bannerAd sendWinFailNotificationReason:TianmuAdBiddingLossReasonOther winnerPirce:100];
     
 }
@@ -173,6 +197,10 @@
  */
 - (void)tianmuBannerSuccessLoad:(TianmuBannerAdView *)tianmuBannerView {
     // 重要‼️ 如果是竞价广告位，且支持自刷新，需要处理自刷新的竟赢上报
+    _isSucceed = YES;
+    if (_isHeadBidding) {
+        [self.view makeToast:[NSString stringWithFormat:@"询价成功：%ld",[tianmuBannerView bidPrice]]];
+    }
 }
 
 /**

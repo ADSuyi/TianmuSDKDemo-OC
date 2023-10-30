@@ -88,6 +88,10 @@
 }
 
 - (void)bidWin {
+    if (!_isHeadBidding) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
+        return;
+    }
     if (!_isSucceed || !_splashAd) {
         [self.view makeToast:[NSString stringWithFormat:@"开屏广告未加载成功"]];
         return;
@@ -109,6 +113,10 @@
 }
 
 - (void)bidFail {
+    if (!_isHeadBidding) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
+        return;
+    }
     if (!_isSucceed || !_splashAd) {
         [self.view makeToast:[NSString stringWithFormat:@"开屏广告未加载成功"]];
         return;
@@ -129,6 +137,7 @@
 
 - (void)loadAndShow {
     _isHeadBidding = NO;
+    _isSucceed = NO;
         // 初始化开屏广告加载实例
     if (!_splashAd)
         _splashAd = [[TianmuSplashAd alloc]init];

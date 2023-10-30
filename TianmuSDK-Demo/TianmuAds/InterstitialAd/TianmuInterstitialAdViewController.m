@@ -83,6 +83,7 @@
 
 - (void)loadInterstitialAd{
     _isNormalAd = YES;
+    _isReady = NO;
     // 1、初始化插屏广告
     self.interstitialAd = [[TianmuInterstitialAd alloc]init];
     self.interstitialAd.controller = self;
@@ -105,6 +106,7 @@
 
 - (void)loadBidAd {
     _isNormalAd = NO;
+    _isReady = NO;
     // 1、初始化插屏广告
     self.interstitialAd = [[TianmuInterstitialAd alloc]init];
     self.interstitialAd.controller = self;
@@ -114,12 +116,14 @@
 }
 
 - (void)bidWin {
-    if (_isNormalAd)
+    if (_isNormalAd) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
         return;
+    }
     // 发送竞价成功通知
     // 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分
-    [self.interstitialAd sendWinNotificationWithPrice:[self.interstitialAd bidFloor]];
     if (_isReady) {
+        [self.interstitialAd sendWinNotificationWithPrice:[self.interstitialAd bidFloor]];
         [self.interstitialAd showFromRootViewController:self];
         return;
     }
@@ -127,10 +131,12 @@
 }
 
 - (void)bidFail {
-    if (_isNormalAd)
+    if (_isNormalAd) {
+        [self.view makeToast:@"当前广告不是竞价广告"];
         return;
-    [self.interstitialAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:1000];
+    }
     if (_isReady) {
+        [self.interstitialAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:1000];
         [self.interstitialAd showFromRootViewController:self];
         return;
     }

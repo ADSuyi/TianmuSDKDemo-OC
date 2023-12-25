@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'TianmuSDK-Demo' do
   pod 'MJRefresh'
-  pod 'TianmuSDK', '~> 2.0.9.1'
+  pod 'TianmuSDK', '~> 2.1.0.1'
 end
 
 

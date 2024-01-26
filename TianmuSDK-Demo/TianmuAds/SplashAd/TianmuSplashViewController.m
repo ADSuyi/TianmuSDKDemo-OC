@@ -83,7 +83,7 @@
     _splashAd.delegate = self;
     // 设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
     _splashAd.backgroundColor = [UIColor adsy_getColorWithImage:[UIImage imageNamed:@"750x1334.png"] withNewSize:[UIScreen mainScreen].bounds.size];
-    [_splashAd loadAd];
+    [_splashAd loadAdWithBottomView:self.fullBool ? nil : [self getBottomView]];
     
 }
 
@@ -100,6 +100,10 @@
     // 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分
     [_splashAd sendWinNotificationWithPrice:[_splashAd bidFloor]];
     
+    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : [self getBottomView]];
+    
+}
+- (UIView *)getBottomView{
     CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
     
     UIView *bottomView = [[UIView alloc] init];
@@ -108,10 +112,8 @@
     UIImageView *logoImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Tianmu_Logo.png"]];
     logoImageView.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width-135)/2, (bottomViewHeight-46)/2, 135, 46);
     [bottomView addSubview:logoImageView];
-    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : bottomView ];
-    
+    return bottomView;
 }
-
 - (void)bidFail {
     if (!_isHeadBidding) {
         [self.view makeToast:@"当前广告不是竞价广告"];
@@ -123,15 +125,8 @@
     }
 //    发送竞价成功通知
     [_splashAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:100];
-    CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;
-    
-    UIView *bottomView = [[UIView alloc] init];
-    bottomView.backgroundColor = [UIColor whiteColor];
-    bottomView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, bottomViewHeight);
-    UIImageView *logoImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Tianmu_Logo.png"]];
-    logoImageView.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width-135)/2, (bottomViewHeight-46)/2, 135, 46);
-    [bottomView addSubview:logoImageView];
-    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : bottomView ];
+
+    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : [self getBottomView] ];
     
 }
 

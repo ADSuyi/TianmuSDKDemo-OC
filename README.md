@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.1.1.1
+# TianmuSDK iOS接入文档 v2.2.0.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.1.1.1'
+pod 'TianmuSDK','~>2.2.0.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -268,7 +268,7 @@ TianmuSDK.enablePersonalAd = NO;
 | - |     |
 | bidPrice | 返回广告的出价，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
-| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
+| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分） |
 | sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
 **TianmuSplashAdDelegate**：开屏代理方法
@@ -377,7 +377,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | - |     |
 | bidPrice | 返回广告的出价，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
-| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
+| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分） |
 | sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
 **TianmuBannerAdViewDelegate**：横幅代理方法
@@ -465,7 +465,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 |:-----------|:--------|
 | initWithAdSize: | 初始化广告加载器，需传入需要广告尺寸(一般按照16：9比例返回广告视图） |
 | loadAdWithCount: | 加载广告<br/>count：拉取几条广告,建议区间 1~4, 超过可能无法拉取到 |
-| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
+| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分） |
 | sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
 **TianmuNativeExpressAdDelegate**：信息流代理方法
@@ -609,7 +609,7 @@ if(!_nativeAd) {
 | showFromRootViewController: | 展示广告 |
 | bidPrice | 返回广告的eCPM，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
-| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
+| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分） |
 | sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
 **TianmuInterstitialAdDelegate**：插屏代理方法
@@ -716,7 +716,7 @@ if(!_nativeAd) {
 | showFromRootViewController: | 展示广告 |
 | bidPrice | 返回广告的eCPM，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
-| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分） |
+| sendWinNotificationWithPrice: | 竞胜之后调用, 需要在展示广告之前调用<br/>price： 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分） |
 | sendWinFailNotificationReason:winnerPirce: | 竞败之后调用<br/>reason：竞价失败原因<br/>winnerPirce：竟赢者价格，单位：分 |
 
 **TianmuNativeExpressDelegate**：激励视频代理方法

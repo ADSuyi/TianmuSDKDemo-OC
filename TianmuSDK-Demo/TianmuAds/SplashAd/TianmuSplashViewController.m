@@ -97,8 +97,8 @@
         return;
     }
     // 发送竞价成功通知
-    // 如天目从竞价队列中胜出，则传入竞价队列第二高价（单位：分）；如仅有天目平台竞价广告，则竞赢上报的价格为当前广告对象的底价，如：[adView bidFloor]（单位：分
-    [_splashAd sendWinNotificationWithPrice:[_splashAd bidFloor]];
+    // 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分）
+    [_splashAd sendWinNotificationWithPrice:[_splashAd bidPrice]];
     
     [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : [self getBottomView]];
     

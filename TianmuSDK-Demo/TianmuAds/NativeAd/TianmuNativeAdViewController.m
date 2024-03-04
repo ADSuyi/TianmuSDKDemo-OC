@@ -137,7 +137,7 @@
     }
     if (_isReady && _nativeAd) {
         for (UIView<TianmuExpressViewRegisterProtocol> *adView in _adViewArray) {
-            [_nativeAd sendWinNotificationWithAdView:adView price:adView.bidFloor];
+            [_nativeAd sendWinNotificationWithAdView:adView price:adView.bidPrice];
             [adView tianmu_registViews:@[adView]];
             ADSuyiAsyncMainBlock(^{
                 [self->_adViewArray removeObject:adView];

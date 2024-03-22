@@ -10,7 +10,9 @@
 @implementation TianmuNativeTableViewCell
 
 - (void)setAdView:(UIView *)adView {
-    [_adView removeFromSuperview];
+    for(UIView *view in self.contentView.subviews){
+        [view removeFromSuperview];
+    }
     
     _adView = adView;
     _adView.frame = self.contentView.bounds;

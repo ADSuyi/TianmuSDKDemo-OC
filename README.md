@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.2.1.2
+# TianmuSDK iOS接入文档 v2.2.1.3
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.2.1.2'
+pod 'TianmuSDK','~>2.2.1.3'
 ```
 
 <div STYLE="page-break-after: always;"></div>

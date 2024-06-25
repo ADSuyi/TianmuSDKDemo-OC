@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.2.1.3
+# TianmuSDK iOS接入文档 v2.2.3.1
 
 
 # 修订历史
@@ -35,7 +35,7 @@
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.2.1.3'
+pod 'TianmuSDK','~>2.2.3.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>
@@ -258,12 +258,12 @@ TianmuSDK.enablePersonalAd = NO;
 
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
-| loadAndShowInWindow:withBottomView: | 加载并展示开屏<br/>window：开屏广告展示的window<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
+| loadAndShowInWindow:withBottomView: | 加载并展示开屏<br/>window：开屏广告展示的window，若为自定义window需设置viewController<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
 | - |  |
 | loadAdWithBottomView: | 加载开屏广告<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
 | loadAd | 加载开屏广告（接口即将废弃，请使用loadAdWithBottomView:）  |
-| isDataTimeout | 广告是否超时（广告需要在10分钟内展示） |
-| showInWindow:withBottomView： | 展示开屏（接口即将废弃，请使用showInWindow:）<br/>window：开屏广告展示的window<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
+| isDataTimeout | 广告是否超时 |
+| showInWindow:withBottomView： | 展示开屏（接口即将废弃，请使用showInWindow:）<br/>window：开屏广告展示的window，若为自定义window需设置viewController<br/>bottomView：底部logo视图, 高度不能超过屏幕的25%，可传nil  |
 | showInWindow: | 展示开屏<br/>window：开屏广告展示的window<br/> |
 | - |     |
 | bidPrice | 返回广告的出价，单位：分 |
@@ -373,7 +373,7 @@ Banner广告(横幅广告)位于app顶部、中部、底部任意一处，横向
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
 | loadRequest | 开始请求广告 |
-| isDataTimeout | 广告是否超时（广告需要在10分钟内展示） |
+| isDataTimeout | 广告是否超时 |
 | - |     |
 | bidPrice | 返回广告的出价，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
@@ -605,7 +605,7 @@ if(!_nativeAd) {
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
 | loadAdData | 加载广告数据 |
-| isDataTimeout | 广告是否超时（广告需要在10分钟内展示） |
+| isDataTimeout | 广告是否超时 |
 | showFromRootViewController: | 展示广告 |
 | bidPrice | 返回广告的eCPM，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |
@@ -712,7 +712,7 @@ if(!_nativeAd) {
 | <center>接口</center> | <center>说明</center>|
 |:-----------|:--------|
 | loadAdData | 加载广告数据 |
-| isDataTimeout | 广告是否超时（广告需要在10分钟内展示） |
+| isDataTimeout | 广告是否超时 |
 | showFromRootViewController: | 展示广告 |
 | bidPrice | 返回广告的eCPM，单位：分 |
 | bidFloor | 返回广告的底价，单位：分 |

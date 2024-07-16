@@ -1,9 +1,22 @@
 # TianmuSDK iOS接入文档 v2.2.4.1
 
+```
+SDK名称: 天目广告SDK
+开发者: 杭州艾狄墨搏信息服务有限公司
+更新日期: 2024-05-31
+功能介绍: 天目广告SDK是一款全面的 APP 广告变现解决方案，支持多种广告格式，包括横幅、插屏和视频广告。它具有精准和详细的数据分析功能，帮助开发者优化广告投放和提升收益。
+```
 
-# 修订历史
 
-[SDK版本更新日志](https://doc.admobile.top/ssp/pages/tmsdkchios/)
+[查看更新日志](https://doc.admobile.top/ssp/pages/tmsdkchios/)
+
+[查看接入文档](https://doc.admobile.top/ssp/pages/tmsdkios/)
+
+[隐私政策](https://www.admobile.top/privacyPolicy.html)
+
+[合规指引](https://doc.admobile.top/ssp/1Start/7_compliance_guide.html)
+
+[用户协议](https://doc.admobile.top/ssp/pages/contract/)
 
 
 # 1. 概述

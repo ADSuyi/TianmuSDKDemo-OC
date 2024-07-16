@@ -3,12 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03293E2D26F4308A0094AB96 /* ADSuyiKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D44A7926EC41EA00F77A69 /* ADSuyiKit.xcframework */; };
-		03293E2F26F4308A0094AB96 /* ADSuyiKitIDFA.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D44A7A26EC41EA00F77A69 /* ADSuyiKitIDFA.xcframework */; };
 		035E597527264DBD00C51632 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035E597427264DB000C51632 /* libresolv.9.tbd */; };
 		0397973D26F030D90033D33E /* RootViewNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397973A26F030D90033D33E /* RootViewNavigationController.m */; };
 		0397973E26F030D90033D33E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0397973B26F030D90033D33E /* BaseViewController.m */; };
@@ -35,7 +33,6 @@
 /* Begin PBXFileReference section */
 		03293E2B26F42B380094AB96 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		03293E4526F49BF40094AB96 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		03340DF62704007D00057B60 /* ADSuyiSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ADSuyiSDK.xcframework; path = Pods/ADSuyiSDK/ADSuyiSDK/Classes/core/ADSuyiSDK.xcframework; sourceTree = "<group>"; };
 		035E597427264DB000C51632 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		0397973926F030D90033D33E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		0397973A26F030D90033D33E /* RootViewNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewNavigationController.m; sourceTree = "<group>"; };
@@ -57,8 +54,6 @@
 		03D44A5D26EC3DD700F77A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03D44A5F26EC3DD700F77A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03D44A6026EC3DD700F77A69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03D44A7926EC41EA00F77A69 /* ADSuyiKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ADSuyiKit.xcframework; path = Pods/ADSuyiKit/ADSuyiKit/Classes/ADSuyiKit.xcframework; sourceTree = "<group>"; };
-		03D44A7A26EC41EA00F77A69 /* ADSuyiKitIDFA.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ADSuyiKitIDFA.xcframework; path = Pods/ADSuyiKit/ADSuyiKit/Classes/ADSuyiKitIDFA.xcframework; sourceTree = "<group>"; };
 		0C1835CA26F5E527007481FC /* TianmuNativeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianmuNativeTableViewCell.h; sourceTree = "<group>"; };
 		0C1835CB26F5E527007481FC /* TianmuNativeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TianmuNativeTableViewCell.m; sourceTree = "<group>"; };
 		0C637FAF26F078610088EAE2 /* TianmuInterstitialAdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianmuInterstitialAdViewController.h; sourceTree = "<group>"; };
@@ -74,7 +69,6 @@
 		B5B32702ECE91A43DF34BB0B /* Pods-TianmuSDK-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TianmuSDK-Demo.debug.xcconfig"; path = "Target Support Files/Pods-TianmuSDK-Demo/Pods-TianmuSDK-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		BA87B20027322E2700D7B954 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		BAE7213D27326CC200052A30 /* Tianmu_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tianmu_Logo.png; sourceTree = "<group>"; };
-		D03716139064BE387146EB90 /* libPods-TianmuSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TianmuSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACED9CF2834CFAD006623B1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		FACED9D22834D084006623B1 /* ADTianmuRewardVodAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTianmuRewardVodAdViewController.h; sourceTree = "<group>"; };
 		FACED9D32834D084006623B1 /* ADTianmuRewardVodAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTianmuRewardVodAdViewController.m; sourceTree = "<group>"; };
@@ -88,9 +82,7 @@
 				BA87B20127322E2700D7B954 /* AppTrackingTransparency.framework in Frameworks */,
 				2DEF8EA8579FD80B058013D2 /* libPods-TianmuSDK-Demo.a in Frameworks */,
 				035E597527264DBD00C51632 /* libresolv.9.tbd in Frameworks */,
-				03293E2D26F4308A0094AB96 /* ADSuyiKit.xcframework in Frameworks */,
 				FACED9D02834CFAD006623B1 /* CoreTelephony.framework in Frameworks */,
-				03293E2F26F4308A0094AB96 /* ADSuyiKitIDFA.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,12 +197,8 @@
 				FACED9CF2834CFAD006623B1 /* CoreTelephony.framework */,
 				BA87B20027322E2700D7B954 /* AppTrackingTransparency.framework */,
 				035E597427264DB000C51632 /* libresolv.9.tbd */,
-				03340DF62704007D00057B60 /* ADSuyiSDK.xcframework */,
 				03293E4526F49BF40094AB96 /* StoreKit.framework */,
 				03293E2B26F42B380094AB96 /* WebKit.framework */,
-				03D44A7926EC41EA00F77A69 /* ADSuyiKit.xcframework */,
-				03D44A7A26EC41EA00F77A69 /* ADSuyiKitIDFA.xcframework */,
-				D03716139064BE387146EB90 /* libPods-TianmuSDK.a */,
 				23FFBFDA1B6B07C5AAB8A10D /* libPods-TianmuSDK-Demo.a */,
 			);
 			name = Frameworks;

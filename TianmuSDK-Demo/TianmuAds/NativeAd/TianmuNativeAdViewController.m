@@ -227,12 +227,6 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if([cell isKindOfClass:[TianmuNativeTableViewCell class]]) {
-        [(TianmuNativeTableViewCell *)cell setAdView:nil];
-    }
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

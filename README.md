@@ -1,4 +1,4 @@
-# TianmuSDK iOS接入文档 v2.2.5.1
+# TianmuSDK iOS接入文档 v2.2.5.2
 
 ```
 SDK名称: 天目广告SDK

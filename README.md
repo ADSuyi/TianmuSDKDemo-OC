@@ -48,7 +48,7 @@ SDK名称: 天目广告SDK
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.2.5.1'
+pod 'TianmuSDK','~>2.2.5.2'
 ```
 
 <div STYLE="page-break-after: always;"></div>

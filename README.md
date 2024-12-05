@@ -1,12 +1,13 @@
-# TianmuSDK iOS接入文档 v2.2.7.1
+#  天目广告 SDK iOS接入文档 v2.2.7.1
 
 ```
 SDK名称: 天目广告SDK
 开发者: 杭州艾狄墨搏信息服务有限公司
-更新日期: 2024-05-31
+更新日期: 2024-12-05
 功能介绍: 天目广告SDK是一款全面的 APP 广告变现解决方案，支持多种广告格式，包括横幅、插屏和视频广告。它具有精准和详细的数据分析功能，帮助开发者优化广告投放和提升收益。
 ```
 
+[SDK下载地址](Tianmu_iOS_2271_166a5e7e554be6ba1dc402fd86886c5a.zip)
 
 [查看更新日志](https://doc.admobile.top/ssp/pages/tmsdkchios/)
 
@@ -25,10 +26,10 @@ SDK名称: 天目广告SDK
 ## 1.1 概述
 
 尊敬的开发者朋友，欢迎您使用天目广告SDK。通过本文档及SDK对外Demo，您可以在几分钟之内轻松完成广告的集成过程。
-- [Github: TianmuSDK Objective-C 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-OC)
-- [Gitee: TianmuSDK Objective-C 对外Demo](https://gitee.com/admobile/tianmu-advertising-sdk-ios)
-- [Github: TianmuSDK Swift 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
-- [Gitee: TianmuSDK Swift 对外Demo](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift)
+- [Github: 天目广告 SDK Objective-C 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-OC)
+- [Gitee:  天目广告 SDK Objective-C 对外Demo](https://gitee.com/admobile/tianmu-advertising-sdk-ios)
+- [Github:  天目广告 SDK Swift 对外Demo](https://github.com/ADSuyi/TianmuSDKDemo-Swift.git)
+- [Gitee:  天目广告 SDK Swift 对外Demo](https://gitee.com/admobile/tianmu-advertising-sdk-ios-swift)
 
 ## 1.2 运行环境
 
@@ -200,7 +201,7 @@ pod 'TianmuSDK','~>2.2.7.1'
 
 # 3. 示例代码
 
-## 3.1 天目SDK的初始化
+## 3.1 天目广告 SDK的初始化
 
 ```obj-c
 #import <TianmuSDK/TianmuSDK.h>

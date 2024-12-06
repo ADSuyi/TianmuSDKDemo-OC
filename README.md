@@ -7,7 +7,7 @@ SDK名称: 天目广告SDK
 功能介绍: 天目广告SDK是一款全面的 APP 广告变现解决方案，支持多种广告格式，包括横幅、插屏和视频广告。它具有精准和详细的数据分析功能，帮助开发者优化广告投放和提升收益。
 ```
 
-[SDK下载地址](Tianmu_iOS_2271_166a5e7e554be6ba1dc402fd86886c5a.zip)
+[SDK下载地址](https://doc.admobile.top/iOSSDK/Tianmu_iOS_2271_166a5e7e554be6ba1dc402fd86886c5a.zip)
 
 [查看更新日志](https://doc.admobile.top/ssp/pages/tmsdkchios/)
 

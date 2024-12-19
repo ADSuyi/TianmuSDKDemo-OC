@@ -1,4 +1,4 @@
-#  天目Ads SDK iOS接入文档 v2.2.7.1
+#  天目Ads SDK iOS接入文档 v2.2.9.1
 
 ```
 SDK名称: 天目Ads SDK
@@ -48,7 +48,7 @@ SDK名称: 天目Ads SDK
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.2.7.1'
+pod 'TianmuSDK','~>2.2.9.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>

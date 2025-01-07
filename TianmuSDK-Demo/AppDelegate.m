@@ -78,16 +78,14 @@
     logoImageView.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width-135)/2, (bottomViewHeight-46)/2, 135, 46);
     [bottomView addSubview:logoImageView];
     
-    if (!_splashAd) {
-        // 初始化开屏广告加载实例
-        _splashAd = [[TianmuSplashAd alloc]init];
-        // 开屏广告的posid
-        _splashAd.posId = @"0b815e3cda9f";
-        // 开屏广告委托对象
-        _splashAd.delegate = self;
-        //设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
-        _splashAd.backgroundColor = [UIColor adsy_getColorWithImage:[UIImage imageNamed:@"750x1334.png"] withNewSize:[UIScreen mainScreen].bounds.size];
-    }
+    // 初始化开屏广告加载实例
+    _splashAd = [[TianmuSplashAd alloc]init];
+    // 开屏广告的posid
+    _splashAd.posId = @"0b815e3cda9f";
+    // 开屏广告委托对象
+    _splashAd.delegate = self;
+    //设置默认启动图(一般设置启动图的平铺颜色为背景颜色，使得视觉效果更加平滑)
+    _splashAd.backgroundColor = [UIColor adsy_getColorWithImage:[UIImage imageNamed:@"750x1334.png"] withNewSize:[UIScreen mainScreen].bounds.size];
     // 加载并展示开屏广告
     [_splashAd loadAndShowInWindow:[UIApplication sharedApplication].keyWindow withBottomView:bottomView];
 }

@@ -172,13 +172,13 @@
  */
 - (void)tianmuSplashAdFailLoad:(TianmuSplashAd *)splashAd withError:(NSError *)error {
     NSLog(@"splash开屏广告加载失败%@",error);
+    _splashAd = nil;
 }
 /**
  *  开屏广告展示失败
  */
 - (void)tianmuSplashAdRenderFaild:(TianmuSplashAd *)splashAd withError:(NSError *)error {
     [self.view makeToast:[NSString stringWithFormat:@"开屏广告渲染失败：%@",error]];
-    _isSucceed = NO;
 }
 
 /**
@@ -199,7 +199,6 @@
  *  开屏广告关闭回调
  */
 - (void)tianmuSplashAdClosed:(TianmuSplashAd *)splashAd {
-    _isSucceed = NO;
     _splashAd = nil;
 }
 
@@ -217,14 +216,17 @@
     
 }
 
-
+/**
+ *  开屏广告关闭落地页回调
+ */
 - (void)tianmuSplashAdCloseLandingPage:(TianmuSplashAd *)splashAd {
-    _isSucceed = NO;
     _splashAd = nil;
 }
 
+/**
+ *  开屏广告展示失败
+ */
 - (void)tianmuSplashAdFailToShow:(TianmuSplashAd *)splashAd error:(NSError *)error {
-    _isSucceed = NO;
     NSLog(@"%@",error);
     [self.view makeToast:[NSString stringWithFormat:@"splash开屏广告展示失败%@",error]];
 }

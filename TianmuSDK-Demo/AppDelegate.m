@@ -66,6 +66,9 @@
 }
 
 - (void)loadSplashAdView{
+    if (self.splashAd) {
+        return;
+    }
     CGFloat bottomViewHeight = [UIScreen mainScreen].bounds.size.height * 0.15;;
     
     UIView *bottomView = [[UIView alloc] init];
@@ -131,16 +134,22 @@
  *  开屏广告点击回调
  */
 - (void)tianmuSplashAdClicked:(TianmuSplashAd *)splashAd {
-    _splashAd = nil;
+    
 }
 
 /**
  *  开屏广告关闭回调
  */
 - (void)tianmuSplashAdClosed:(TianmuSplashAd *)splashAd {
-    
+    _splashAd = nil;
 }
 
+/**
+ *  开屏广告关闭落地页回调
+ */
+- (void)tianmuSplashAdCloseLandingPage:(TianmuSplashAd *)splashAd {
+    _splashAd = nil;
+}
 
 #pragma mark -- private
 

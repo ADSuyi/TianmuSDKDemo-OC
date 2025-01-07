@@ -192,7 +192,7 @@
  *  开屏广告点击回调
  */
 - (void)tianmuSplashAdClicked:(TianmuSplashAd *)splashAd {
-    _isSucceed = NO;
+    
 }
 
 /**

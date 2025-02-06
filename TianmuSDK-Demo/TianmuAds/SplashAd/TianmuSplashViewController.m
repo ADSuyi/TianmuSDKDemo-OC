@@ -100,7 +100,7 @@
     // 如天目从竞价队列中胜出，则传入广告返回的出价，如：[adView bidPrice]（单位：分）
     [_splashAd sendWinNotificationWithPrice:[_splashAd bidPrice]];
     
-    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : [self getBottomView]];
+    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow];
     
 }
 - (UIView *)getBottomView{
@@ -126,7 +126,7 @@
 //    发送竞价成功通知
     [_splashAd sendWinFailNotificationReason:(TianmuAdBiddingLossReasonLowPrice) winnerPirce:100];
 
-    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow withBottomView:self.fullBool ? nil : [self getBottomView] ];
+    [_splashAd showInWindow:[UIApplication sharedApplication].keyWindow];
     
 }
 

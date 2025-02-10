@@ -87,54 +87,56 @@ pod 'TianmuSDK','~>2.3.0.1'
     ```obj-c
     <key>LSApplicationQueriesSchemes</key>
         <array>
-            <string>dianping</string>
-            <string>imeituan</string>
-            <string>com.suning.SuningEBuy</string>
-            <string>openapp.jdmobile</string>
-            <string>vipshop</string>
-            <string>snssdk141</string>
-            <string>ctrip</string>
-            <string>suning</string>
-            <string>qunariphone</string>
-            <string>QunarAlipay</string>
-            <string>qunaraphone</string>
-            <string>yohobuy</string>
-            <string>kaola</string>
-            <string>agoda</string>
-            <string>openapp.xzdz</string>
-            <string>beibeiapp</string>
-            <string>taobao</string>
-            <string>tmall</string>
-            <string>openjd</string>
-            <string>jhs</string>
-            <string>yhd</string>
-            <string>wireless1688</string>
-            <string>GomeEShop</string>
-            <string>wbmain</string>
-            <string>xhsdiscover</string>
-            <string>douyin</string>
-            <string>pinduoduo</string>
-            <string>jdmobile</string>
             <string>tbopen</string>
-            <string>pddopen</string>
-            <string>mogujie</string>
-            <string>koubei</string>
-            <string>eleme</string>
-            <string>youku</string>
-            <string>gengmei</string>
-            <string>airbnb</string>
-            <string>alipays</string>
-            <string>didicommon</string>
-            <string>OneTravel</string>
-            <string>farfetchCN</string>
-            <string>farfetch</string>
-            <string>snssdk1112</string>
+            <string>pinduoduo</string>
+            <string>openapp.jdmobile</string>
+            <string>tmall</string>
+            <string>imeituan</string>
+            <string>meituanwaimai</string>
+            <string>fleamarket</string>
+            <string>kwai</string>
+            <string>taobaolive</string>
             <string>snssdk1128</string>
-            <string>miguvideo</string>
-            <string>kfcapplinkurl</string>
-            <string>iqiyi</string>
-            <string>uclink</string>
+            <string>taobaolite</string>
+            <string>alipay</string>
+            <string>eleme</string>
+            <string>vipshop</string>
+            <string>iosamap</string>
+            <string>quark</string>
+            <string>iyouxuan</string>
+            <string>ksnebula</string>
+            <string>snssdk2329</string>
+            <string>dypay8663</string>
+            <string>wireless1688</string>
+            <string>taobaotravel</string>
+            <string>diditaxi</string>
+            <string>shuqireader</string>
+            <string>ucbrowser</string>
+            <string>xhsdiscover</string>
+            <string>qiyi-iphone</string>
+            <string>sinaweibo</string>
+            <string>wbmain</string>
+            <string>dingdongneighborhood</string>
+            <string>dianping</string>
+            <string>wdkhema</string>
+            <string>youku</string>
+            <string>kaola</string>
+            <string>QunariPhone</string>
+            <string>ctrip</string>
+            <string>lianjia</string>
+            <string>tbmovie</string>
+            <string>dingtalk</string>
+            <string>cainiao</string>
+            <string>bilibili</string>
+            <string>zhihu</string>
+            <string>yanxuan</string>
+            <string>soul</string>
             <string>app.soyoung</string>
+            <string>yidui</string>
+            <string>momochat</string>
+            <string>tantanapp</string>
+            <string>dragon1967</string>
+            <string>sohunews</string>
         </array>
     ```
 

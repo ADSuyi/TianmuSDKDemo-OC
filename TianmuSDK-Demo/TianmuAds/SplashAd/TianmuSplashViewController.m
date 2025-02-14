@@ -179,6 +179,7 @@
  */
 - (void)tianmuSplashAdRenderFaild:(TianmuSplashAd *)splashAd withError:(NSError *)error {
     [self.view makeToast:[NSString stringWithFormat:@"开屏广告渲染失败：%@",error]];
+    _isSucceed = NO;
 }
 
 /**

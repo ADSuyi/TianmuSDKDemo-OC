@@ -394,6 +394,9 @@
         [adView addSubview:imageView];
         imageView.frame = mainFrame;
         NSString *urlStr = adView.adData.imageUrl;
+        if (urlStr.length == 0) {
+            urlStr = [adView.adData.imageUrlArray firstObject];
+        }
         if(urlStr.length > 0) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]]];

@@ -146,7 +146,7 @@
  *  开屏广告关闭落地页回调
  */
 - (void)tianmuSplashAdCloseLandingPage:(TianmuSplashAd *)splashAd {
-    _splashAd = nil;
+    
 }
 
 #pragma mark -- private

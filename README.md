@@ -1,12 +1,12 @@
-#  天目Ads SDK iOS接入文档 v2.3.1.1
+#  天目Ads SDK iOS接入文档 v3.0.0.1
 
 ```
 SDK名称: 天目Ads SDK
 开发者: 杭州艾狄墨搏信息服务有限公司
-更新日期: 2025-03-20
+更新日期: 2025-05-19
 功能介绍: 天目Ads SDK是一款全面的 APP 广告变现解决方案，支持多种广告格式，包括横幅、插屏和视频广告。它具有精准和详细的数据分析功能，帮助开发者优化广告投放和提升收益。
 ```
-[SDK下载地址](https://doc.admobile.top/iOSSDK/Tianmu_iOS_2311_3df2f2b6cb04b8c36bc8867d05e9e55a.zip)
+[SDK下载地址](https://doc.admobile.top/iOSSDK/Tianmu_iOS_3001_80517bf306030be255043a1f48d9bfbf.zip)
 
 [查看更新日志](https://doc.admobile.top/ssp/pages/tmsdkchios/)
 
@@ -48,7 +48,7 @@ SDK名称: 天目Ads SDK
 ## 2.1 采用cocoapods进行SDK的导入
 
 ```ruby
-pod 'TianmuSDK','~>2.3.1.1'
+pod 'TianmuSDK','~>3.0.0.1'
 ```
 
 <div STYLE="page-break-after: always;"></div>

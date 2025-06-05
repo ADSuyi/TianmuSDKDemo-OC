@@ -19,7 +19,6 @@
 
 @property (nonatomic ,strong) TianmuSplashAd  *splashAd;
 
-
 @end
 
 @implementation AppDelegate
